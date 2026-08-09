@@ -1,1 +1,1 @@
-Git sync test.
+New token test.
