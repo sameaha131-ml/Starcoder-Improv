@@ -3036,3 +3036,1092 @@ def task_func(seed=42):
         return ax
     except Exception as e:
         raise ValueError(f""Error generating the plot: {e}"")"
+"parser . add_argument ( ""--log_path"" , dest = ""log_path"" , type = str , default = ""~/logs/log.json"" , help = ""the path to the log JSON file"" )","parser . add_argument ( ""--log_path"" , dest = ""log_path"" , type = str , default = ""/home/jsbsim/logs/log.json"" , help = ""the path to the log JSON file"" )","parser. add_argument ( ""--log_path"", dest = ""log_path"", type = str, default = ""~/logs/log.json"", help = ""the path to the log JSON file"" )"
+basenames = [ os . path . splitext ( os . path . split ( name ) [ 1 ] ) [ 0 ] for name in args . input ],basenames = [ ( os . path . split ( name ) [ 1 ] ) . split ( '.' ) [ 0 ] for name in args . input ],basenames = [ os. path. splitext ( os. path. split ( name ) [ 1 ] ) [ 0 ] for name in args. input if name ]
+"raise ValueError ( 'value %s does not name a defined column in this table' % ( c , ) )","raise ValueError ( 'value %s does not name a defined column in this table' % ( column , ) )","raise ValueError ( 'value %s does not name a defined column in this table' % ( value, ) )"
+"from flask import Flask
+from flask_restful import Resource, Api
+import requests
+def task_func(api_url, template_folder):
+
+    app = Flask(__name__, template_folder=template_folder)
+    api = Api()
+
+    class DataResource(Resource):
+        def get(self):
+            response = requests.get(api_url)
+            data = response.json()
+
+    api.add_resource(DataResource, '/data')
+
+    return requests.compat.json.dumps(app)","from flask import Flask
+from flask_restful import Resource, Api
+import requests
+def task_func(api_url, template_folder):
+
+    app = Flask(__name__, template_folder=template_folder)
+    api = Api(app)
+
+    class DataResource(Resource):
+        def get(self):
+            response = requests.get(api_url)
+            data = response.json()
+            return data
+
+    api.add_resource(DataResource, '/data')
+
+    return app","from flask import Flask
+from flask_restful import Resource, Api
+import requests
+def task_func(api_url, template_folder):
+
+    app = Flask(__name__, template_folder=template_folder)
+    api = Api(app)
+
+    class DataResource(Resource):
+        def get(self):
+            response = requests.get(api_url)
+            data = response.json()
+            return data
+
+    api.add_resource(DataResource, '/data')
+
+    return app"
+if watcher . files ( ) . isEmpty ( ) : watcher . addPath ( self . filenames [ editor ] ),if not watcher . files ( ) : watcher . addPath ( self . filenames [ editor ] ),if watcher. files ( ). isEmpty ( ) and self. filenames [ editor ] : watcher. addPath ( self. filenames [ editor ] )
+"print >> web_config , """"""                         ""default_display: {}}""""""","print >> web_config , """"""                         ""default_display"": {}}""""""","print >> web_config, """"""                         ""default_display: {0}"""""""
+"import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(dictionary, key, value, n=100, bins=30, seed=0):
+
+    # Test that value is a number
+    try:
+        float(value)
+    except ValueError:
+        raise ValueError(""Value must be a number."")
+    # Update the dictionary
+    dictionary[key] = value
+
+    # Generate the dataset
+    np.random.seed(int(abs(float(value))) % 2**32)
+    data = np.random.normal(loc=float(value), scale=float(value), size=n)
+
+    # Plot the histogram of the generated data and get the axes object
+    data = np.cumsum(data)
+    _, ax = plt.subplots()
+    ax.hist(data, bins=bins, density=True)
+    data = pd.Series(data)
+    return dictionary, data in dictionary == ax","import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(dictionary, key, value, n=100, bins=30, seed=0):
+
+    np.random.seed(seed)
+    # Test that value is a number
+    try:
+        float(value)
+    except ValueError:
+        raise ValueError(""Value must be a number."")
+    # Update the dictionary
+    dictionary[key] = value
+    
+    # Generate the dataset
+    data = np.random.normal(loc=float(value), scale=float(value), size=n)
+    
+    # Plot the histogram of the generated data and get the axes object
+    _, ax = plt.subplots()
+    ax.hist(data, bins=bins, density=True)
+    data = pd.Series(data)
+    return dictionary, data, ax","import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+def task_func(dictionary, key, value, n=100, bins=30, seed=0):
+
+    # Test that value is a number
+    try:
+        float(value)
+    except ValueError:
+        raise ValueError(""Value must be a number."")
+    # Update the dictionary
+    dictionary[key] = value
+    
+    # Generate the dataset
+    np.random.seed(seed)
+    data = np.random.normal(loc=float(value), scale=float(value), size=n)
+    
+    # Plot the histogram of the generated data and get the axes object
+    _, ax = plt.subplots()
+    ax.hist(data, bins=bins, density=True)
+    data = pd.Series(data)
+    return dictionary, data, ax"
+"class Solution:
+    def maxIncreasingGroups(self, usageLimits: List[int]) -> int:
+        usageLimits = usageLimits.sort()
+        k, n = 0, len(usageLimits)
+        for i in range(n):
+            if usageLimits[i] >= k:
+                k += 1
+                usageLimits[i] -= k
+            if i + 1 < n:
+                usageLimits[i + 1] += usageLimits[i]
+        return usageLimits.sum()","class Solution:
+    def maxIncreasingGroups(self, usageLimits: List[int]) -> int:
+        usageLimits.sort()
+        k, n = 0, len(usageLimits)
+        for i in range(n):
+            if usageLimits[i] > k:
+                k += 1
+                usageLimits[i] -= k
+            if i + 1 < n:
+                usageLimits[i + 1] += usageLimits[i]
+        return k","class Solution:
+    def maxIncreasingGroups(self, usageLimits: List[int]) -> int:
+        usageLimits.sort()
+        k, n = 0, len(usageLimits)
+        for i in range(n):
+            if usageLimits[i] > k:
+                k += 1
+                usageLimits[i] -= k
+            if i + 1 < n:
+                usageLimits[i + 1] += usageLimits[i]
+        return k"
+"return _sunau_getparams ( self . getnchannels ( ) , self . getsampwidth ( ) , self . getframerate ( ) , self . getnframes ( ) , self . getcomptype ( ) , self . getcompname ( ) )","return _sunau_params ( self . getnchannels ( ) , self . getsampwidth ( ) , self . getframerate ( ) , self . getnframes ( ) , self . getcomptype ( ) , self . getcompname ( ) )","return _sunau_getparams ( self. getnchannels ( ), self. getsampwidth ( ), self. getframerate ( ), self. getnframes ( ), self. getcomptype ( ), self. getcompname ( ), self. getparams ( ) )"
+"class Solution:
+    def minOperations(self, k: int) -> int:
+        ans = k
+        for a in range(k - 1):
+            x = a + 1
+            b = (k + x - 1) // x - 1
+            ans = min(ans, a + b)
+        return ans","class Solution:
+    def minOperations(self, k: int) -> int:
+        ans = k
+        for a in range(k):
+            x = a + 1
+            b = (k + x - 1) // x - 1
+            ans = min(ans, a + b)
+        return ans","class Solution:
+    def minOperations(self, k: int) -> int:
+        ans = k
+        for a in range(k - 1):
+            x = a + 1
+            b = (k + x - 1) // x - 1
+            ans = min(ans, a + b + 1)
+        return ans"
+"assert batch_size <= self . num_classes , ( ""batch_size must not be greather than the number of classes"" "" (i.e. batch_size <= {})"" . format ( self . num_classes ) )","assert batch_size <= self . num_classes , ( ""batch_size must not be greather than the number of classes"" "" (i.e. set batch_size <= {})"" . format ( self . num_classes ) )","assert batch_size <= self. num_classes, ( ""batch_size must not be greater than the number of classes"" "" (i.e. batch_size <= {})"". format ( self. num_classes ) )"
+"import collections
+import json
+import os
+def task_func(directory_path: str) -> dict:
+
+    key_counts = collections.defaultdict(int)
+
+    for filename in os.listdir(directory_path):
+        if filename.endswith('.json'):
+            filename = os.path.join(directory_path, filename)
+            with open(file_path, 'r') as json_file:
+                data = json.load(json_file)
+                for key in key_counts.keys():
+                    key_counts[key] += 1
+
+    return dict(key_counts)","import collections
+import json
+import os
+def task_func(directory_path: str) -> dict:
+
+    key_counts = collections.defaultdict(int)
+
+    for filename in os.listdir(directory_path):
+        if filename.endswith('.json'):
+            file_path = os.path.join(directory_path, filename)
+            with open(file_path, 'r') as json_file:
+                data = json.load(json_file)
+                for key in data.keys():
+                    key_counts[key] += 1
+
+    return dict(key_counts)","import collections
+import json
+import os
+def task_func(directory_path: str) -> dict:
+
+    key_counts = collections.defaultdict(int)
+
+    for filename in os.listdir(directory_path):
+        if filename.endswith('.json'):
+            file_path = os.path.join(directory_path, filename)
+            with open(file_path, 'r') as json_file:
+                data = json.load(json_file)
+                for key in data.keys():
+                    key_counts[key] += 1
+
+    return dict(key_counts)"
+"import collections
+import random
+from queue import PriorityQueue
+def task_func(number_teams=5):
+
+
+    # Constants
+    
+    TEAMS = []
+    POINTS = []
+
+    for i in range(1, number_teams+1):
+        TEAMS.append(""Team ""+str(i))
+        POINTS.append(10*i)
+    
+    shuffled_points = POINTS.copy()
+    random.shuffle(shuffled_points)
+    ranking = dict(zip(TEAMS, shuffled_points))
+
+    sorted_ranking = PriorityQueue()
+    sorted_ranking.put((0, """"))
+    for team, points in ranking.items():
+        sorted_ranking.put((-points, team))
+
+    sorted_ranking_dict = collections.OrderedDict()
+    while not sorted_ranking.empty():
+        points, team = sorted_ranking.get()
+        sorted_ranking_dict[team] = -points
+
+    return sorted_ranking_dict","import collections
+import random
+from queue import PriorityQueue
+def task_func(number_teams=5):
+
+
+    # Constants
+    
+    TEAMS = []
+    POINTS = []
+
+    for i in range(1, number_teams+1):
+        TEAMS.append(""Team ""+str(i))
+        POINTS.append(10*i)
+    
+    shuffled_points = POINTS.copy()
+    random.shuffle(shuffled_points)
+    ranking = dict(zip(TEAMS, shuffled_points))
+
+    sorted_ranking = PriorityQueue()
+    for team, points in ranking.items():
+        sorted_ranking.put((-points, team))
+
+    sorted_ranking_dict = collections.OrderedDict()
+    while not sorted_ranking.empty():
+        points, team = sorted_ranking.get()
+        sorted_ranking_dict[team] = -points
+
+    return sorted_ranking_dict","import collections
+import random
+from queue import PriorityQueue
+def task_func(number_teams=5):
+
+
+    # Constants
+    
+    TEAMS = []
+    POINTS = []
+
+    for i in range(1, number_teams+1):
+        TEAMS.append(""Team ""+str(i))
+        POINTS.append(10*i)
+    
+    shuffled_points = POINTS.copy()
+    random.shuffle(shuffled_points)
+    ranking = dict(zip(TEAMS, shuffled_points))
+
+    sorted_ranking = PriorityQueue()
+    for team, points in ranking.items():
+        sorted_ranking.put((-points, team))
+
+    sorted_ranking_dict = collections.OrderedDict()
+    while not sorted_ranking.empty():
+        points, team = sorted_ranking.get()
+        sorted_ranking_dict[team] = -points
+
+    return sorted_ranking_dict"
+import comInterfaces . HTBRAILLEDRIVERSERVERLib as constants,import comtypes . gen . HTBRAILLEDRIVERSERVERLib as constants,import comInterfaces. HTBRAILLEDRIVERSERVERLib as constants
+"class Solution:
+    def longestSemiRepetitiveSubstring(self, s: str) -> int:
+        ans, n = 1, len(s)
+        cnt = j = 0
+        for i in range(1, n):
+            cnt += s[i] == s[i - 1] and cnt == 0
+            while cnt > 1:
+                cnt -= s[j] == s[j + 1]
+                j += 1
+            ans = max(ans, i - j)
+        return ans","class Solution:
+    def longestSemiRepetitiveSubstring(self, s: str) -> int:
+        ans, n = 1, len(s)
+        cnt = j = 0
+        for i in range(1, n):
+            cnt += s[i] == s[i - 1]
+            while cnt > 1:
+                cnt -= s[j] == s[j + 1]
+                j += 1
+            ans = max(ans, i - j + 1)
+        return ans","class Solution:
+    def longestSemiRepetitiveSubstring(self, s: str) -> int:
+        ans, n = 1, len(s)
+        cnt = j = 0
+        for i in range(1, n):
+            cnt += s[i] == s[i - 1]
+            while cnt > 1:
+                cnt -= s[j] == s[j + 1]
+                j += 1
+            ans = max(ans, i - j + 1)
+        return ans"
+"import numpy as np
+import pandas as pd
+def task_func(products, n_samples=100, sales_lower=50, sales_upper=200, profit_margin_min=0.1, profit_margin_max=0.5, random_seed=42):
+
+    np.random.seed(random_seed)
+    
+    if not products:
+        return pd.DataFrame(columns=[""Product"", ""Sales"", ""Profit""])
+
+    if not isinstance(products, list) or not all(isinstance(product, str) for product in products):
+        raise TypeError(""products must be a list of strings."")
+    if not isinstance(n_samples, int) or n_samples <= 0:
+        raise ValueError(""n_samples must be a positive integer."")
+    if not (isinstance(sales_lower, int) and isinstance(sales_upper, int)) or sales_lower >= sales_upper:
+        raise ValueError(""sales_lower must be less than sales_upper and both must be integers."")
+    if not all(isinstance(x, (int, float)) for x in [profit_margin_min, profit_margin_max]) or profit_margin_min >= profit_margin_max:
+        raise ValueError(""profit_margin_min must be less than profit_margin_max and both must be numeric."")
+
+    data = []
+    for _ in range(n_samples):
+        product = np.random.choice(products)
+        sales = np.random.randint(sales_lower, sales_upper + 1)
+        profit = sales * np.random.uniform(profit_margin_min, profit_margin_max)
+        profit = 0
+        data.append([product, sales, profit])
+
+    df = pd.DataFrame(data, columns=[""Product"", ""Sales"", ""Profit""])
+    df = df.groupby(""Product"", as_index=False).sum()
+    df.sort_values(""Profit"", ascending=False, inplace=True)
+
+    return df","import numpy as np
+import pandas as pd
+def task_func(products, n_samples=100, sales_lower=50, sales_upper=200, profit_margin_min=0.1, profit_margin_max=0.5, random_seed=42):
+
+    np.random.seed(random_seed)
+    
+    if not products:
+        return pd.DataFrame(columns=[""Product"", ""Sales"", ""Profit""])
+
+    if not isinstance(products, list) or not all(isinstance(product, str) for product in products):
+        raise TypeError(""products must be a list of strings."")
+    if not isinstance(n_samples, int) or n_samples <= 0:
+        raise ValueError(""n_samples must be a positive integer."")
+    if not (isinstance(sales_lower, int) and isinstance(sales_upper, int)) or sales_lower >= sales_upper:
+        raise ValueError(""sales_lower must be less than sales_upper and both must be integers."")
+    if not all(isinstance(x, (int, float)) for x in [profit_margin_min, profit_margin_max]) or profit_margin_min >= profit_margin_max:
+        raise ValueError(""profit_margin_min must be less than profit_margin_max and both must be numeric."")
+
+    data = []
+    for _ in range(n_samples):
+        product = np.random.choice(products)
+        sales = np.random.randint(sales_lower, sales_upper + 1)
+        profit = sales * np.random.uniform(profit_margin_min, profit_margin_max)
+        data.append([product, sales, profit])
+
+    df = pd.DataFrame(data, columns=[""Product"", ""Sales"", ""Profit""])
+    df = df.groupby(""Product"", as_index=False).sum()
+    df.sort_values(""Profit"", ascending=False, inplace=True)
+
+    return df","import numpy as np
+import pandas as pd
+def task_func(products, n_samples=100, sales_lower=50, sales_upper=200, profit_margin_min=0.1, profit_margin_max=0.5, random_seed=42):
+
+    np.random.seed(random_seed)
+    
+    if not products:
+        return pd.DataFrame(columns=[""Product"", ""Sales"", ""Profit""])
+
+    if not isinstance(products, list) or not all(isinstance(product, str) for product in products):
+        raise TypeError(""products must be a list of strings."")
+    if not isinstance(n_samples, int) or n_samples <= 0:
+        raise ValueError(""n_samples must be a positive integer."")
+    if not (isinstance(sales_lower, int) and isinstance(sales_upper, int)) or sales_lower >= sales_upper:
+        raise ValueError(""sales_lower must be less than sales_upper and both must be integers."")
+    if not all(isinstance(x, (int, float)) for x in [profit_margin_min, profit_margin_max]) or profit_margin_min >= profit_margin_max:
+        raise ValueError(""profit_margin_min must be less than profit_margin_max and both must be numeric."")
+
+    data = []
+    for _ in range(n_samples):
+        product = np.random.choice(products)
+        sales = np.random.randint(sales_lower, sales_upper + 1)
+        profit = sales * np.random.uniform(profit_margin_min, profit_margin_max)
+        data.append([product, sales, profit])
+
+    df = pd.DataFrame(data, columns=[""Product"", ""Sales"
+fstype = get_filesystem_type ( self . real_devicecryptse ),fstype = get_filesystem_type ( self . real_device ),fstype = get_filesystem_type ( self. real_devicecrypts )
+"import csv
+import io
+from django.http import HttpRequest, FileResponse
+def task_func(request, header, csv_data):
+
+    csv_io = io.StringIO()
+    writer = csv.writer(csv_io)
+    writer.writerows(csv_data)
+    csv_io.seek(0)
+
+    response = FileResponse(csv_io, as_attachment=True, filename='data.csv')
+    response['Content-Type'] = 'text/csv'
+
+    return response","import csv
+import io
+from django.http import HttpRequest, FileResponse
+def task_func(request, header, csv_data):
+
+    csv_io = io.StringIO()
+    writer = csv.writer(csv_io)
+    writer.writerow(header)
+    writer.writerows(csv_data)
+    csv_io.seek(0)
+
+    response = FileResponse(csv_io, as_attachment=True, filename='data.csv')
+    response['Content-Type'] = 'text/csv'
+
+    return response","import csv
+import io
+from django.http import HttpRequest, FileResponse
+def task_func(request, header, csv_data):
+
+    csv_io = io.StringIO()
+    writer = csv.writer(csv_io)
+    writer.writerow(header)
+    writer.writerows(csv_data)
+    csv_io.seek(0)
+
+    response = FileResponse(csv_io, as_attachment=True, filename='data.csv')
+    response['Content-Type'] = 'text/csv'
+
+    return response"
+"class Solution:
+
+  def minCostGoodCaption(self, caption: str) -> str:
+    n = len(caption)
+    if n < 3:
+      return ''
+
+    MAX_COST = 1_000_000_000
+    # dp[i][j][k] := the minimum cost of caption[i..n - 1], where j is the last
+    # letter used, and k is the count of consecutive letters
+    dp = [[[MAX_COST] * 3 for _ in range(26)] for _ in range(n)]
+
+    for c in range(26):
+      dp[-1][c][0] = abs(string.ascii_lowercase.index(caption[-1]) - c)
+
+    minCost = MAX_COST
+
+    for i in range(n - 2, -1, -1):
+      newMinCost = MAX_COST
+      for c in range(26):
+        changeCost = abs(string.ascii_lowercase.index(caption[i]) - c)
+        dp[i][c][0] = changeCost + minCost
+        dp[i][c][1] = changeCost + dp[i + 1][c][0]
+        dp[i][c][2] = changeCost + min(dp[i + 1][c][1], dp[i + 1][c][2])
+        newMinCost = min(newMinCost, dp[i][c][2])
+      minCost = newMinCost
+
+    # Reconstruct the string.
+    ans = []
+    cost = MAX_COST
+    letter = -1
+
+    # Find the initial best letter.
+    for c in range(25, -1, -1):
+      if dp[0][c][2] <= cost:
+        letter = c
+        cost = dp[0][c][2]
+
+    # Add the initial triplet.
+    cost -= self._appendLetter(caption, 0, chr(ord('a') + letter), ans)
+    cost -= self._appendLetter(caption, 1, chr(ord('a') + letter), ans)
+    cost -= self._appendLetter(caption, 2, chr(ord('a') + letter), ans)
+
+    # Build the rest of the string.
+    i = 3
+    while i < n:
+      nextLetter = self._getNextLetter(dp, i, cost)
+      if nextLetter < letter or not min(dp[i][letter]) > cost:
+        letter = nextLetter
+        cost -= self._appendLetter(caption, i, chr(ord('a') + letter), ans)
+        cost -= self._appendLetter(caption, i + 1, chr(ord('a') + letter), ans)
+        cost -= self._appendLetter(caption, i + 2, chr(ord('a') + letter), ans)
+        i += 3
+      else:
+        cost -= self._appendLetter(caption, i, chr(ord('a') + letter), ans)
+        i += 1
+
+    return ''.join(ans)
+
+  def _getNextLetter(self, dp: list[list[list[int]]], i: int, cost: int) -> int:
+    nextLetter = 26
+    for c in range(25, -1, -1):
+      if cost == dp[i][c][2]:
+        nextLetter = c
+    return nextLetter
+
+  def _appendLetter(
+      self,
+      caption: str,
+      i: int,
+      letter: str,
+      ans: list[str]
+  ) -> int:
+    ans.append(letter)
+    return abs(ord(caption[i]) - ord(letter))","class Solution:
+
+  def minCostGoodCaption(self, caption: str) -> str:
+    n = len(caption)
+    if n < 3:
+      return ''
+
+    MAX_COST = 1_000_000_000
+    # dp[i][j][k] := the minimum cost of caption[i..n - 1], where j is the last
+    # letter used, and k is the count of consecutive letters
+    dp = [[[MAX_COST] * 3 for _ in range(26)] for _ in range(n)]
+
+    for c in range(26):
+      dp[-1][c][0] = abs(string.ascii_lowercase.index(caption[-1]) - c)
+
+    minCost = MAX_COST
+
+    for i in range(n - 2, -1, -1):
+      newMinCost = MAX_COST
+      for c in range(26):
+        changeCost = abs(string.ascii_lowercase.index(caption[i]) - c)
+        dp[i][c][0] = changeCost + minCost
+        dp[i][c][1] = changeCost + dp[i + 1][c][0]
+        dp[i][c][2] = changeCost + min(dp[i + 1][c][1], dp[i + 1][c][2])
+        newMinCost = min(newMinCost, dp[i][c][2])
+      minCost = newMinCost
+
+    # Reconstruct the string.
+    ans = []
+    cost = MAX_COST
+    letter = -1
+
+    # Find the initial best letter.
+    for c in range(25, -1, -1):
+      if dp[0][c][2] <= cost:
+        letter = c
+        cost = dp[0][c][2]
+
+    # Add the initial triplet.
+    cost -= self._appendLetter(caption, 0, chr(ord('a') + letter), ans)
+    cost -= self._appendLetter(caption, 1, chr(ord('a') + letter), ans)
+    cost -= self._appendLetter(caption, 2, chr(ord('a') + letter), ans)
+
+    # Build the rest of the string.
+    i = 3
+    while i < n:
+      nextLetter = self._getNextLetter(dp, i, cost)
+      if nextLetter < letter or min(dp[i][letter]) > cost:
+        letter = nextLetter
+        cost -= self._appendLetter(caption, i, chr(ord('a') + letter), ans)
+        cost -= self._appendLetter(caption, i + 1, chr(ord('a') + letter), ans)
+        cost -= self._appendLetter(caption, i + 2, chr(ord('a') + letter), ans)
+        i += 3
+      else:
+        cost -= self._appendLetter(caption, i, chr(ord('a') + letter), ans)
+        i += 1
+
+    return ''.join(ans)
+
+  def _getNextLetter(self, dp: list[list[list[int]]], i: int, cost: int) -> int:
+    nextLetter = 26
+    for c in range(25, -1, -1):
+      if cost == dp[i][c][2]:
+        nextLetter = c
+    return nextLetter
+
+  def _appendLetter(
+      self,
+      caption: str,
+      i: int,
+      letter: str,
+      ans: list[str]
+  ) -> int:
+    ans.append(letter)
+    return abs(ord(caption[i]) - ord(letter))","class Solution:
+
+  def minCostGoodCaption(self, caption: str) -> str:
+    n = len(caption)
+    if n < 3:
+      return ''
+
+    MAX_COST = 1_000_000_000
+    # dp[i][j][k] := the minimum cost of caption[i..n - 1], where j is the last
+    # letter used, and k is the count of consecutive letters
+    dp = [[[MAX_COST] * 3 for _ in range(26)] for _ in range(n)]
+
+    for c in range(26):
+      dp[-1][c][0] = abs(string.ascii_lowercase.index(caption[-1]) - c)
+
+    minCost = MAX_COST
+
+    for i in range(n - 2, -1, -1):
+      newMinCost = MAX_COST
+      for c in range(26):
+        changeCost = abs(string.ascii_lowercase.index(caption[i]) - c)
+        dp[i][c][0] = changeCost + minCost
+        dp[i][c][1] = changeCost + dp[i + 1][c][0]
+        dp[i][c][2] = changeCost + min(dp[i + 1][c][1], dp[i + 1][c][2])
+        newMinCost = min(newMinCost, dp[i][c][2])
+      minCost = newMinCost
+
+    # Reconstruct the string.
+    ans = []
+    cost = MAX_COST
+    letter = -1
+
+    # Find the initial best letter.
+    for c in range(25, -1, -1):
+      if dp["
+"import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses.items():
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames","import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames","import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames"
+content = 'File:' + str ( e . __traceback__ . tb_frame . f_code . co_filename ) + '------Line:' + str ( e . __traceback__ . tb_lineno ) + '------Error:' + str ( e ) + '------Tips:' + msg,content = 'File:' + str ( e . __traceback__ . tb_frame . f_code . co_filename ) + '------Line:' + str ( e . __traceback__ . tb_lineno ) + '------Error:' + str ( e ) + '------Tips:' + str ( msg ),content = 'File:' + str ( e. __traceback__. tb_frame. f_code. co_filename ) + '------Line:' + str ( e. __traceback__. tb_lineno ) + '------Error:' + str ( e ) + '------Tips:' + str ( msg )
+"values = [ field_instance [ tags [ 0 ] [ - 1 ] ] for field_instance in bfo . fields ( tags [ 0 ] [ : - 1 ] , escape = 9 ) if not field_instance . has_key ( 'e' ) ]","values = [ field_instance [ tags [ 0 ] [ - 1 ] ] for field_instance in bfo . fields ( tags [ 0 ] [ : - 1 ] , escape = 9 ) if 'e' not in field_instance and tags [ 0 ] [ - 1 ] in field_instance ]","values = [ field_instance [ tags [ 0 ] [ - 1 ] ] for field_instance in bfo. fields ( tags [ 0 ] [ : - 1 ], escape = 9 ) if field_instance. has_key ( 'e' ) ]"
+self . waiting_events . cached_priority = new_priority,self . waiting_events [ uuid ] . cached_priority = new_priority,self. waiting_events. cached_priority = new_priority. value
+"import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    X = np.linspace(-10, 10, 400)
+    Y = np.where(X >= 0, X**2, 0)
+
+    plt.figure()
+    plt.plot(X, Y)
+    plt.title('y = x^2')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.grid(enable=True)
+    plt.show()","import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    X = np.linspace(-10, 10, 400)
+    Y = X**2
+
+    plt.figure()
+    plt.plot(X, Y)
+    plt.title('y = x^2')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.grid(True)
+    plt.show()","import numpy as np
+import matplotlib.pyplot as plt
+def task_func():
+
+    X = np.linspace(-10, 10, 400)
+    Y = X**2
+
+    plt.figure()
+    plt.plot(X, Y)
+    plt.title('y = x^2')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.grid(True)
+    plt.show()"
+"result = database . get ( key . encode ( encoding = 'UTF-8' ) , None , None , db . DB_MULTIPLE )",result = database . get ( key . encode ( encoding = 'UTF-8' ) ),"result = database. get ( key. encode ( encoding = 'UTF-8' ), None, None, db. DB_MULTIPLE )"
+"class Solution:
+    def maxOperations(self, s: str) -> int:
+        ans = cnt = 0
+        for i, c in enumerate(s):
+            if c:
+                cnt += 1
+            elif i and s[i - 1] == ""1"":
+                ans += cnt
+        return ans","class Solution:
+    def maxOperations(self, s: str) -> int:
+        ans = cnt = 0
+        for i, c in enumerate(s):
+            if c == ""1"":
+                cnt += 1
+            elif i and s[i - 1] == ""1"":
+                ans += cnt
+        return ans","class Solution:
+    def maxOperations(self, s: str) -> int:
+        ans = cnt = 0
+        for i, c in enumerate(s):
+            if c == ""1"":
+                cnt += 1
+            elif i and s[i - 1] == ""1"":
+                ans += cnt
+        return ans"
+from SplitTransactionsNotSupportedException import *,from SplitTransactionsNotSupportedException import SplitTransactionsNotSupportedException,from SplitTransactionsNotSupported import *
+"class Solution:
+    def maximumSum(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        for k in range(1, n + 1):
+            t = 0
+            j = 1
+            while k * j * j < n:
+                t += nums[k * j * j - 1]
+                j += 1
+            ans = min(ans, t)
+        return ans","class Solution:
+    def maximumSum(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        for k in range(1, n + 1):
+            t = 0
+            j = 1
+            while k * j * j <= n:
+                t += nums[k * j * j - 1]
+                j += 1
+            ans = max(ans, t)
+        return ans","class Solution:
+    def maximumSum(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = -inf
+        for k in range(1, n + 1):
+            t = 0
+            j = 1
+            while k * j * j <= n:
+                t += nums[k * j * j - 1]
+                j += 1
+            ans = max(ans, t)
+        return ans"
+"object_decode = bytes ( object_raw , ""utf-8"" ) . decode ( ""unicode_escape"" )","object_decode = bytes ( object_raw [ : - 1 ] , ""utf-8"" ) . decode ( ""unicode_escape"" )","object_decode = bytes ( object_raw, ""utf-8"" ). decode ( ""unicode_escape"" ). encode ( ""utf-8"" )"
+"LOG . info ( ""Renaming apt list %s to %s"" , filename , newname )","LOG . debug ( ""Renaming apt list %s to %s"" , filename , newname )","LOG. info ( ""Renaming apt list %s to %s"", filename, newname )"
+"import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if file_list is None:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return process.returncode","import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if not file_list:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process = subprocess.Popen(file_path)
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return None","import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if not file_list:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process = subprocess.Popen(file_path)
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return None"
+"import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(datetime.now().timestamp())
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+
+        fig, ax = plt.subplots()
+        values.sort()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")","import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")","import matplotlib.pyplot as plt
+import pandas as pd
+import random
+from datetime import datetime
+def task_func(seed=42):
+
+    try:
+        plt.rc('font', family='Arial')
+
+        random.seed(seed)
+        dates = pd.date_range(end=datetime.now(), periods=30)
+        values = [random.randint(0, 100) for _ in range(30)]
+        
+        fig, ax = plt.subplots()
+        ax.plot(dates, values, label='Value over Time')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Value')
+        ax.set_title('Random Time Series Data')
+        ax.legend()
+
+        return ax
+    except Exception as e:
+        raise ValueError(f""Error generating the plot: {e}"")"
+"retry_count = parameter . IntParameter ( default = 999999999 , config_path = dict ( section = 'scheduler' , name = 'disable_failures' ) )","retry_count = parameter . IntParameter ( default = 999999999 , config_path = dict ( section = 'scheduler' , name = 'retry_count' ) )","retry_count = parameter. IntParameter ( default = 999999999, config_path = dict ( section ='scheduler', name ='retry_count' ) )"
+if u'csrf_token' not in post . keys ( ) : post . update ( { 'csrf_token' : csrf } ),if 'csrf_token' not in post . keys ( ) : post . update ( { 'csrf_token' : csrf } ),if 'csrf_token' not in post. keys ( ) : post. update ( { 'csrf_token' : csrf } )
+format += ' {0.hour:02}' if not self . hour is None else ' ' + unknown_char * 2,format += '{0.hour:02}' if not self . hour is None else '' + unknown_char * 2,format +='{0.hour:02}' if self. hour is not None else'' + unknown_char * 2
+"openBrowser ( ""https://docs.google.com/presentation/d/1rAXpVEqZ435SGky5q3ZVkbSyWz97f43D_V2zcRQRIj0/htmlpresent"" )","openBrowser ( ""https://docs.google.com/presentation/d/1rAXpVEqZ435SGky5q3ZVkbSyWz97f43D_V2zcRQRIj0"" )","openBrowser ( ""https://docs.google.com/presentation/d/1rAXpVEqZ435SGky5q3ZVkbSyWz97f43D_V2zcRQRIj0/edit#slide=id.g10000000000000000000"" )"
+"c_wrong_output_msg = wrong_output_msg or ( ""Calling `%s` should output %s, instead got %s."" % ( call_str , format_output ( output_solution ) , format_output ( output_solution ) ) )","c_wrong_output_msg = wrong_output_msg or ( ""Calling `%s` should output %s, instead got %s."" % ( call_str , format_output ( output_solution ) , format_output ( output_student ) ) )","c_wrong_output_msg = wrong_output_msg or ( ""Calling `%s` should output %s, instead got %s."" % ( call_str, format_output ( output_solution ), format_output ( output_solution ) ) )"
+raise ValueError ( 'Only know how to handle extensions: %s; ' 'with PIL installed matplotlib can handle ' 'more images' % list ( six . iterkeys ( handlers . keys ) ) ),raise ValueError ( 'Only know how to handle extensions: %s; ' 'with PIL installed matplotlib can handle ' 'more images' % list ( six . iterkeys ( handlers ) ) ),raise ValueError ( 'Only know how to handle extensions: %s;''with PIL installed matplotlib can handle''more images' % list ( six. iterkeys ( handlers ) ) )
+"if not invalid_errors_list : _send_validation_error_email ( syn , filenames , message , file_users )","if invalid_errors_list : _send_validation_error_email ( syn , filenames , message , file_users )","if invalid_errors_list : _send_validation_error_email ( syn, filenames, message, file_users )"
+"class Solution:
+    def minimumDeletions(self, word: str, k: int) -> int:
+        def f(v: int) -> int:
+            ans = 0
+            for x in nums:
+                if x > v + k: continue
+                if x < v:
+                    ans += x
+                elif x > v + k:
+                    ans += x - v - k
+            return ans
+
+        nums = Counter(word).values()
+        nums = [x for x in nums if x > k]
+        return min(f(v) for v in range(len(word) + 1))","class Solution:
+    def minimumDeletions(self, word: str, k: int) -> int:
+        def f(v: int) -> int:
+            ans = 0
+            for x in nums:
+                if x < v:
+                    ans += x
+                elif x > v + k:
+                    ans += x - v - k
+            return ans
+
+        nums = Counter(word).values()
+        return min(f(v) for v in range(len(word) + 1))","class Solution:
+    def minimumDeletions(self, word: str, k: int) -> int:
+        def f(v: int) -> int:
+            ans = 0
+            for x in nums:
+                if x > v + k: continue
+                if x < v:
+                    ans += x
+                elif x > v + k:
+                    ans += x - v - k
+            return ans
+
+        nums = Counter(word).values()
+        return min(f(v) for v in range(len(word) + 1))"
+"import random
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(n, value):
+
+    if n < 1:  # Handle case where n is 0 or less
+        return [], 0
+
+    numbers = [random.random() for _ in range(n)]
+    avg = numbers.mean()
+    greater_avg = [x for x in numbers if x > avg]
+
+    bpoint = bisect.bisect_right(numbers, value)
+    num_greater_value = len(numbers) - bpoint
+
+    plt.plot(numbers)
+
+    return greater_avg, num_greater_value","import random
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(n, value):
+
+    if n < 1:  # Handle case where n is 0 or less
+        return [], 0
+
+    numbers = [random.random() for _ in range(n)]
+    avg = statistics.mean(numbers)
+    greater_avg = [x for x in numbers if x > avg]
+
+    numbers.sort()
+    bpoint = bisect.bisect_right(numbers, value)
+    num_greater_value = len(numbers) - bpoint
+
+    plt.plot(numbers)
+    plt.show()
+
+    return greater_avg, num_greater_value","import random
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(n, value):
+
+    if n < 1:  # Handle case where n is 0 or less
+        return [], 0
+
+    numbers = [random.random() for _ in range(n)]
+    avg = statistics.mean(numbers)
+    greater_avg = [x for x in numbers if x > avg]
+
+    bpoint = bisect.bisect_right(numbers, value)
+    num_greater_value = len(numbers) - bpoint
+
+    plt.plot(numbers)
+    plt.show()
+
+    return greater_avg, num_greater_value"
+"args = { '--targets' : 'EGFR_HUMAN_D0' , '--templates' : '\,' . join ( [ 'KC1D_HUMAN_D0_4KB8_D' , 'KC1D_HUMAN_D0_4HNF_A' ] ) , '--verbose' : False , '--help' : False , }","args = { '--targets' : 'EGFR_HUMAN_D0' , '--templates' : ',' . join ( [ 'KC1D_HUMAN_D0_4KB8_D' , 'KC1D_HUMAN_D0_4HNF_A' ] ) , '--verbose' : False , '--help' : False , }","args = { '--targets' : 'EGFR_HUMAN_D0', '--templates' : '\,'. join ( [ 'KC1D_HUMAN_D0_4KB8_D', 'KC1D_HUMAN_D0_4HNF_A' ] ), '--verbose' : False, '--help' : False, }"
+"log . info ( ""Deleting CloudFront distribution: %s"" % d . id , extra = dict ( __nonl__ = True ) )","log . info ( ""Deleting CloudFront distribution: %s"" % d . id , extra = dict ( __nonewline__ = True ) )","log. info ( ""Deleting CloudFront distribution: %s"" % d. id )"
+"if type in [ 'all_callable' , 'missing_data' ] : matrix_header += ( 'CallWasMade' , 'PassedDepthFilter' , 'PassedProportionFilter' )","if type in [ 'master' , 'missingdata' ] : matrix_header += ( 'CallWasMade' , 'PassedDepthFilter' , 'PassedProportionFilter' )","if type in [ 'all_callable','missing_data', 'no_data' ] : matrix_header += ( 'CallWasMade', 'PassedDepthFilter', 'PassedProportionFilter' )"
+"LOGGER . info ( ""Export timed out, reducing query window and writing state."" . format ( ex ) )","LOGGER . info ( ""Export timed out, reducing query window and writing state."" )","LOGGER. info ( ""Export timed out, reducing query window and writing state."" )"
+"class Solution:
+    def maxSum(self, grid: List[List[int]], limits: List[int], k: int) -> int:
+        for nums, limit in zip(grid, limits):
+            nums.sort()
+            for _ in range(min(limit, len(pq))):
+                heappush(pq, nums.pop())
+                if len(pq) > k:
+                    heappop(pq)
+        return sum(pq[0])","class Solution:
+    def maxSum(self, grid: List[List[int]], limits: List[int], k: int) -> int:
+        pq = []
+        for nums, limit in zip(grid, limits):
+            nums.sort()
+            for _ in range(limit):
+                heappush(pq, nums.pop())
+                if len(pq) > k:
+                    heappop(pq)
+        return sum(pq)","class Solution:
+    def maxSum(self, grid: List[List[int]], limits: List[int], k: int) -> int:
+        pq = []
+        for nums, limit in zip(grid, limits):
+            nums.sort()
+            for _ in range(limit):
+                heappush(pq, nums.pop())
+                if len(pq) > k:
+                    heappop(pq)
+        return sum(pq)"
+sublime . eror_message ( 'An error occurred while trying to run texdoc.' ),sublime . error_message ( 'An error occurred while trying to run texdoc.' ),sublime. error_message ( 'An error occurred while trying to run texdoc.' )
+"command ( build_platform_notification ( 'Sphinx' , 'Build in progress pastb critical phase.' ) , ignore = True )","command ( build_platform_notification ( 'Sphinx' , 'Build in progress past critical phase.' ) , ignore = True )","command ( build_platform_notification ( 'Sphinx', 'Build in progress past critical phase.' ), ignore = True, timeout = 10 )"
+"class Solution:
+    def maxRemovals(self, source: str, pattern: str, targetIndices: List[int]) -> int:
+        m, n = len(source), len(pattern)
+        f = [[-inf] * (n + 1)] * (m + 1)
+        f[0][0] = 0
+        s = set(targetIndices)
+        for i, c in enumerate(source, 1):
+            for j in range(n + 1):
+                f[i][j] = f[i - 1][j] + int((i - 1) in s)
+                if j and c == pattern[j - 1]:
+                    f[i][j] = max(f[i][j], f[i - 1][j - 1])
+        return f[m][n]","class Solution:
+    def maxRemovals(self, source: str, pattern: str, targetIndices: List[int]) -> int:
+        m, n = len(source), len(pattern)
+        f = [[-inf] * (n + 1) for _ in range(m + 1)]
+        f[0][0] = 0
+        s = set(targetIndices)
+        for i, c in enumerate(source, 1):
+            for j in range(n + 1):
+                f[i][j] = f[i - 1][j] + int((i - 1) in s)
+                if j and c == pattern[j - 1]:
+                    f[i][j] = max(f[i][j], f[i - 1][j - 1])
+        return f[m][n]","class Solution:
+    def maxRemovals(self, source: str, pattern: str, targetIndices: List[int]) -> int:
+        m, n = len(source), len(pattern)
+        f = [[-inf] * (n + 1) for _ in range(m + 1)]
+        f[0][0] = 0
+        s = set(targetIndices)
+        for i, c in enumerate(source, 1):
+            for j in range(n + 1):
+                f[i][j] = f[i - 1][j] + int((i - 1) in s)
+                if j and c == pattern[j - 1]:
+                    f[i][j] = max(f[i][j], f[i - 1][j - 1])
+        return f[m][n]"
+"vvalues = get_ncdata_from_series ( df [ c ] , v ) [ 0 ]","vvalues = get_ncdata_from_series ( pfg [ c ] , v ) [ 0 ]","vvalues = get_ncdata_from_series ( df [ c ], v )"
