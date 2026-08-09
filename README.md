@@ -1,45 +1,52 @@
-# Starcoder2-3B Code Repair - v2 (Improved)
+# Starcoder2-3B Code Repair - v3 (Stop Token + Full Dataset)
 
-Fine-tuned `bigcode/starcoder2-3b` with QLoRA on a Python bug-fixing dataset.
-v2 fixes: proper loss masking, no comment stripping, generation cleanup.
+Fine-tuned `bigcode/starcoder2-3b` with QLoRA on Python bug-fixing dataset.
+v3 adds stop token (`<|endoftext|>`) to prevent hallucination, trains on full dataset.
 
 ## Setup
 - Base model: bigcode/starcoder2-3b
 - Fine-tuning: QLoRA (4-bit NF4, r=16, alpha=16)
-- Max sequence length: 768 tokens
+- Max sequence length: 1024 tokens
 - Hardware: 2x Tesla T4 (15GB each)
+- Effective batch size: 16
 
 ## Dataset
-Custom hybrid dataset. Subset used for fast iteration.
-- Train: 1,000 samples
-- Validation: 200 samples
-- Test: 200 samples
+- Train: 20,077 samples
+- Validation: 2,510 samples
+- Test: 2,510 samples
 
-## Checkpoint Selection
-Best checkpoint: step 120 (lowest eval loss).
+## Training Log
+| Step | Train Loss | Val Loss |
+|------|-----------|----------|
+| 200 | 0.248391 | 0.204368 |
+| 400 | 0.167492 | 0.188170 |
+| 600 | 0.149948 | 0.184889 |
+| 800 | 0.146764 | 0.181425 |
+| 1000 | 0.129240 | 0.180178 |
+| 1200 | 0.133605 | 0.175672 |
+| 1400 | 0.111735 | 0.176284 |
+| 1600 | 0.133873 | 0.176963 |
+| 1800 | 0.100462 | 0.172616 |
+| 2000 | 0.103483 | 0.172639 |
+| 2200 | 0.107015 | 0.170352 |
+| 2400 | 0.091035 | 0.170024 |
+| 2600 | 0.100047 | 0.171554 |
+| 2800 | 0.083677 | 0.171930 |
+| 3000 | 0.093338 | 0.170633 |
 
-| Checkpoint | Eval Loss |
-|------------|-----------|
-| 40 | 0.1745 |
-| 80 | 0.1770 |
-| **120** | **0.1666** |
-| 160 | 0.1688 |
+## Best Checkpoint
+Step 2400: val_loss = 0.170024 (downloaded manually).
+Step 2200: val_loss = 0.170352 (backup).
 
-## Evaluation Results (Test Set, 200 samples)
+## Key Changes from v2
+- Added `<|endoftext|>` stop token to fixed code in training data
+- Full dataset (20k vs 1k)
+- max_seq_length increased to 1024 (1.2% truncation)
+- EOS token ID = 0 matches stop token
 
-| Metric | v1 (broken) | v2 (fixed) |
-|--------|-------------|-------------|
-| Exact Match | 0.0% | **1.5%** |
-| Corpus BLEU | 13.9 | **32.9** |
-| ROUGE-1 | — | **52.2** |
-| ROUGE-2 | — | **47.1** |
-| ROUGE-L | — | **51.4** |
-
-## Known Issues
-- Model hallucinates additional examples after the fix (38/200 samples).
-- Post-processing extracts first fix only — real fix is to add stop token during training.
+## Evaluation
+Pending — will test checkpoint-2200 on 300 samples.
 
 ## Files
-- `evaluation_results_v2.csv`: Per-sample predictions with metrics
-- `merged_best/`: Merged best checkpoint (FP16)
-- `starcoder2-3b-v2/`: Training checkpoints
+- `trainer_state.json`: Full training log
+- `checkpoint-*/`: LoRA adapter weights
