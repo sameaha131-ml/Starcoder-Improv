@@ -4672,3 +4672,974 @@ column_names = get_officer_features_table_columns ( config ),column_names = offi
                 x = y
         return x"
 "context = { 'region_name' : request . user . services_region , 'regions' : sorted ( request . user . available_services_regions , key = lambda x : x . lower ( ) ) , 'page_url' : request . horizon . get ( 'panel' ) . get_absolute_url ( ) }","context = { 'region_name' : request . user . services_region , 'regions' : sorted ( request . user . available_services_regions , key = lambda x : ( x or '' ) . lower ( ) ) , 'page_url' : request . horizon . get ( 'panel' ) . get_absolute_url ( ) }","context = {'region_name' : request. user. services_region,'regions' : sorted ( request. user. available_services_regions, key = lambda x : x. lower ( ) ), 'page_url' : request. horizon. get ( 'panel' ). get_absolute_url ( ), 'is_admin' : request. user. is_staff }"
+"class remarks ( nodes . Admonition , nodes . Element ) : """"""
+     New node for remarks messages.
+     """"""","class remarks ( nodes . paragraph , nodes . Element ) : """"""
+     New node for remarks messages.
+     """"""","class remarks ( nodes. Admonition, nodes. Element, nodes. Container ) : """"""
+     New node for remarks messages.
+     """""""
+n_list = [ Q ( network__net_contained_or_equal = nr . range ) for nr in range_nets ],n_list = [ Q ( network__net_contains_or_equals = nr . range ) for nr in range_nets ],n_list = [ Q ( network__net_contained_or_equal = nr ) for nr in range_nets ]
+"access_token = AccessToken . objects . reset ( user , purpose = PURPOSE )","token = AccessToken . objects . reset ( user , purpose = PURPOSE )","access_token = AccessToken. objects. reset ( user, purpose = PURPOSE, refresh = True )"
+"class Solution:
+    def minimumChairs(self, s: str) -> int:
+        cnt = left = 0
+        for c in s:
+            if c == ""E"":
+                if left:
+                    cnt += 1
+                    left -= 1
+                else:
+                    cnt += 1
+            else:
+                left += 1
+        return cnt","class Solution:
+    def minimumChairs(self, s: str) -> int:
+        cnt = left = 0
+        for c in s:
+            if c == ""E"":
+                if left:
+                    left -= 1
+                else:
+                    cnt += 1
+            else:
+                left += 1
+        return cnt","class Solution:
+    def minimumChairs(self, s: str) -> int:
+        cnt = left = 0
+        for c in s:
+            if c == ""E"":
+                if left:
+                    left -= 1
+                else:
+                    cnt += 1
+            else:
+                left += 1
+        return cnt"
+"value = d [ args ] = self . method ( self2 , cr , * args )","value = d [ key ] = self . method ( self2 , cr , * args )","value = d [ args ] = self. method ( self2, cr, * args, context = context )"
+project = Delivery . objects . get ( id = project_id ),project = Delivery . objects . get ( job_name_id = project_id ),"project = Delivery. objects. get ( id = project_id, user = request. user )"
+"group1 . add_argument ( '--gencode_id_foramt' , action = 'store_true' , help = gencode_id_format_str )","group1 . add_argument ( '--gencode_id_format' , action = 'store_true' , help = gencode_id_format_str )","group1. add_argument ( '--gencode_id_format', action ='store_true', help = gencode_id_format_str )"
+"history = open ( 'HISTORY.rst' ) . read ( ) . replace ( '.. :changelog:' , '' )","history = open ( 'CHANGES' ) . read ( ) . replace ( '.. :changelog:' , '' )","history = open ( 'HISTORY.rst' ). read ( ). replace ( '.. :changelog:', '' ). replace ( '.. :changelog:', '' )"
+"quote = hxs . select ( '//dt[@class=""quote""]/a/text()' ) [ 9 ] . extract ( )","quote = hxs . select ( '//dt[@class=""quote""]/a/text()' ) [ - 1 ] . extract ( )","quote = hxs. select ( '//dt[@class=""quote""]/a/text()' ) [ 10 ]. extract ( )"
+"results = self . si_opinion . query ( ** { ""q"" : ""*"" } ) . execute ( )","results = self . si_opinion . query ( ""*"" ) . execute ( )","results = self. si_opinion. query ( ** { ""q"" : ""*"" } ). execute ( ). results"
+"schedule . addEvent ( wrapper , interval , time . time ( ) + 1 )","schedule . addEvent ( wrapper , time . time ( ) + 1 )","schedule. addEvent ( wrapper, interval, time. time ( ) + 1, repeat = True )"
+t_sample = ( t_r * self . buffer_length + self . offset * self . cfg [ 'HEADER' ] [ 'block_size' ] ),t_sample = ( t_r * self . buffer_length + self . offset * 1024 ),t_sample = ( t_r * self. buffer_length + self. offset * self. cfg [ 'HEADER' ] [ 'block_size' ] ) / self. cfg [ 'HEADER' ] ['sample_rate' ]
+"class Solution:
+    def minimumMoves(self, nums: List[int], k: int, maxChanges: int) -> int:
+        n = len(nums)
+        cnt = [0] * (n + 1)
+        s = [0] * (n + 1)
+        for i, x in enumerate(nums, 1):
+            cnt[i] = cnt[i - 1] + x
+            s[i] = s[i] + i * x
+        ans = 1000000000
+        max = lambda x, y: x if x > y else y
+        min = lambda x, y: x if x < y else y
+        for i, x in enumerate(nums, 1):
+            t = 0
+            need = k - x
+            for j in (i - 1, i + 1):
+                if need > 0 and 1 <= j <= n and nums[j - 1] == 1:
+                    need -= 1
+                    t += 1
+            c = min(need, maxChanges)
+            t += c
+            maxChanges -= c
+            if need <= 0:
+                ans = min(ans, t)
+                continue
+            l, r = 2, max(i - 1, n - i)
+            while l <= r:
+                mid = (l + r) >> 1
+                l1, r1 = max(1, i - mid), max(0, i - 1)
+                l2, r2 = min(n + 1, i + 1), min(n, i + mid)
+                c1 = cnt[r1] - cnt[l1 - 1]
+                c2 = cnt[r2] - cnt[l2 - 1]
+                if c1 + c2 >= need:
+                    t1 = c1 * i - (s[r1] - s[l1 - 1])
+                    t2 = s[r2] - s[l2 - 1] - c2 * i
+                    ans = min(ans, t + t1 + t2)
+                    r = mid - 1
+                else:
+                    l = mid + 1
+        return ans","class Solution:
+    def minimumMoves(self, nums: List[int], k: int, maxChanges: int) -> int:
+        n = len(nums)
+        cnt = [0] * (n + 1)
+        s = [0] * (n + 1)
+        for i, x in enumerate(nums, 1):
+            cnt[i] = cnt[i - 1] + x
+            s[i] = s[i - 1] + i * x
+        ans = inf
+        max = lambda x, y: x if x > y else y
+        min = lambda x, y: x if x < y else y
+        for i, x in enumerate(nums, 1):
+            t = 0
+            need = k - x
+            for j in (i - 1, i + 1):
+                if need > 0 and 1 <= j <= n and nums[j - 1] == 1:
+                    need -= 1
+                    t += 1
+            c = min(need, maxChanges)
+            need -= c
+            t += c * 2
+            if need <= 0:
+                ans = min(ans, t)
+                continue
+            l, r = 2, max(i - 1, n - i)
+            while l <= r:
+                mid = (l + r) >> 1
+                l1, r1 = max(1, i - mid), max(0, i - 2)
+                l2, r2 = min(n + 1, i + 2), min(n, i + mid)
+                c1 = cnt[r1] - cnt[l1 - 1]
+                c2 = cnt[r2] - cnt[l2 - 1]
+                if c1 + c2 >= need:
+                    t1 = c1 * i - (s[r1] - s[l1 - 1])
+                    t2 = s[r2] - s[l2 - 1] - c2 * i
+                    ans = min(ans, t + t1 + t2)
+                    r = mid - 1
+                else:
+                    l = mid + 1
+        return ans","class Solution:
+    def minimumMoves(self, nums: List[int], k: int, maxChanges: int) -> int:
+        n = len(nums)
+        cnt = [0] * (n + 1)
+        s = [0] * (n + 1)
+        for i, x in enumerate(nums, 1):
+            cnt[i] = cnt[i - 1] + x
+            s[i] = s[i - 1] + i * x
+        ans = 1000000000
+        max = lambda x, y: x if x > y else y
+        min = lambda x, y: x if x < y else y
+        for i, x in enumerate(nums, 1):
+            t = 0
+            need = k - x
+            for j in (i - 1, i + 1):
+                if need > 0 and 1 <= j <= n and nums[j - 1] == 1:
+                    need -= 1
+                    t += 1
+            c = min(need, maxChanges)
+            t += c
+            maxChanges -= c
+            if need <= 0:
+                ans = min(ans, t)
+                continue
+            l, r = 2, max(i - 1, n - i)
+            while l <= r:
+                mid = (l + r) >> 1
+                l1, r1 = max(1, i - mid), max(0, i - 1)
+                l2, r2 = min(n + 1, i + 1), min(n, i + mid)
+                c1 = cnt[r1] - cnt[l1 - 1]
+                c2 = cnt[r2] - cnt["
+"photo_url_src = chairpage . xpath ( 'string(//div[id=""contentIntleft""]/img[1]/@src)' )","photo_url_src = chairpage . xpath ( 'string(//div[@id=""contentIntleft""]//img[1]/@src)' )","photo_url_src = chairpage. xpath ('string(//div[id=""contentIntleft""]/img[1]/@src)' ). strip ( )"
+"if not isinstance ( response , AstroResponse ) : response = None","if not isinstance ( response , requests . Response ) : response = None","if not isinstance ( response, AstroResponse ) or response. status_code!= 200 : response = None"
+"class Solution:
+    def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        cnt = [0] * 32
+        ans = n + 1
+        s = i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            for h in range(32):
+                if x >> h & 1:
+                    cnt[h] = [cnt[h] + 1]
+            while s >= k and i <= j:
+                ans = min(ans, j - i + 1)
+                y = nums[i]
+                for h in range(32):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s ^= 1 << h
+                i += 1
+        return -1 if ans > n else ans","class Solution:
+    def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        cnt = [0] * 32
+        ans = n + 1
+        s = i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            for h in range(32):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while s >= k and i <= j:
+                ans = min(ans, j - i + 1)
+                y = nums[i]
+                for h in range(32):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s ^= 1 << h
+                i += 1
+        return -1 if ans > n else ans","class Solution:
+    def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        cnt = [0] * 32
+        ans = n + 1
+        s = i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            for h in range(32):
+                if x >> h & 1:
+                    cnt[h] += 1
+            while s >= k and i <= j:
+                ans = min(ans, j - i + 1)
+                y = nums[i]
+                for h in range(32):
+                    if y >> h & 1:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s ^= 1 << h
+                i += 1
+        return -1 if ans > n else ans"
+"q = { 'content_oid' : ObjectId ( _id ) , 'type' : 'general' , 'enabled' : True }","q = { 'content_oid' : content [ '_id' ] , 'type' : 'general' , 'enabled' : True }","q = { 'content_oid' : ObjectId ( _id ), 'type' : 'general', 'enabled' : True, 'is_public' : True }"
+"class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+        ans = cur = 0
+        while mainTank:
+            cur += 1
+            ans += 10
+            if cur % 5 == 0 and additionalTank:
+                additionalTank -= 1
+                mainTank += 1
+        ans += additionalTank * 10
+        return ans","class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+        ans = cur = 0
+        while mainTank:
+            cur += 1
+            ans += 10
+            mainTank -= 1
+            if cur % 5 == 0 and additionalTank:
+                additionalTank -= 1
+                mainTank += 1
+        return ans","class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+        ans = cur = 0
+        while mainTank:
+            cur += 1
+            ans += 10
+            if cur % 5 == 0 and additionalTank:
+                additionalTank -= 1
+                mainTank += 1
+        return ans"
+"class Solution:
+    def maximumJumps(self, nums: List[int], target: int) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i == n - 1:
+                return 0
+            ans = -inf; dfs.cache_clear()
+            for j in range(i + 1, n):
+                if abs(nums[i] - nums[j]) <= target:
+                    ans = max(ans, 1 + dfs(j))
+            return ans
+
+        n = len(nums)
+        ans = dfs(0)
+        return -1 if ans < 0 else ans","class Solution:
+    def maximumJumps(self, nums: List[int], target: int) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i == n - 1:
+                return 0
+            ans = -inf
+            for j in range(i + 1, n):
+                if abs(nums[i] - nums[j]) <= target:
+                    ans = max(ans, 1 + dfs(j))
+            return ans
+
+        n = len(nums)
+        ans = dfs(0)
+        return -1 if ans < 0 else ans","class Solution:
+    def maximumJumps(self, nums: List[int], target: int) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i == n - 1:
+                return 0
+            ans = -inf
+            for j in range(i + 1, n):
+                if abs(nums[i] - nums[j]) <= target:
+                    ans = max(ans, 1 + dfs(j))
+            return ans
+
+        n = len(nums)
+        ans = dfs(0)
+        return -1 if ans < 0 else ans"
+"import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = kmeans.cluster_centers_
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.scatter(centroids[:, 0], centroids[:, 1], marker='x', s=200, c='red', label='Centroids')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend(location='best')
+
+    return labels, ax","import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if not isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = kmeans.cluster_centers_
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.scatter(centroids[:, 0], centroids[:, 1], marker='x', s=200, c='red', label='Centroids')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend()
+
+    return labels, ax","import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if not isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = kmeans.cluster_centers_
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.scatter(centroids[:, 0], centroids[:, 1], marker='x', s=200, c='red', label='Centroids')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend()
+
+    return labels, ax"
+"disk_num = int ( disk . find ( 'div' , class_ = 'headline' ) . h3 . text . split ( "" "" ) [ - 1 ] )","disk_num = int ( disk . find ( 'div' , class_ = 'headline' ) . h3 . text . strip ( ) . split ( "" "" ) [ - 1 ] )","disk_num = int ( disk. find ( 'div', class_ = 'headline' ). h3. text. split ( "" "" ) [ - 1 ]. replace ( "","", """" ) )"
+"class Solution:
+    def findSafeWalk(self, grid: List[List[int]], health: int) -> bool:
+        m, n = len(grid), len(grid[0])
+        dist = [[inf] * n for _ in range(m)]
+        dist[0][0] = 0
+        q = deque([(0, 0)])
+        dirs = (-1, 0, 1, 0, -1)
+        while q:
+            x, y = q.popleft()
+            for a, b in pairwise(dirs):
+                nx, ny = x + a, y + b
+                if (
+                    0 <= nx < m
+                    and 0 <= ny < n
+                    and dist[nx][ny] > dist[x][y] + grid[nx][ny]
+                ):
+                    dist[nx][ny] = dist[x][y] + grid[nx][ny]
+                    q.append((nx, ny))
+        return dist[-1][-1] < health","class Solution:
+    def findSafeWalk(self, grid: List[List[int]], health: int) -> bool:
+        m, n = len(grid), len(grid[0])
+        dist = [[inf] * n for _ in range(m)]
+        dist[0][0] = grid[0][0]
+        q = deque([(0, 0)])
+        dirs = (-1, 0, 1, 0, -1)
+        while q:
+            x, y = q.popleft()
+            for a, b in pairwise(dirs):
+                nx, ny = x + a, y + b
+                if (
+                    0 <= nx < m
+                    and 0 <= ny < n
+                    and dist[nx][ny] > dist[x][y] + grid[nx][ny]
+                ):
+                    dist[nx][ny] = dist[x][y] + grid[nx][ny]
+                    q.append((nx, ny))
+        return dist[-1][-1] < health","class Solution:
+    def findSafeWalk(self, grid: List[List[int]], health: int) -> bool:
+        m, n = len(grid), len(grid[0])
+        dist = [[inf] * n for _ in range(m)]
+        dist[0][0] = grid[0][0]
+        q = deque([(0, 0)])
+        dirs = (-1, 0, 1, 0, -1)
+        while q:
+            x, y = q.popleft()
+            for a, b in pairwise(dirs):
+                nx, ny = x + a, y + b
+                if (
+                    0 <= nx < m
+                    and 0 <= ny < n
+                    and dist[nx][ny] > dist[x][y] + grid[nx][ny]
+                ):
+                    dist[nx][ny] = dist[x][y] + grid[nx][ny]
+                    q.append((nx, ny))
+        return dist[-1][-1] < health"
+"import numpy as np
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(data, value):
+
+    if not data:  # Handle empty data list
+        return np.array([]), 0
+
+    data = np.array(data)
+    avg = statistics.mean(data)
+    greater_avg = data[data > avg]
+
+    data.sort(axis=1)
+    bpoint = bisect.bisect_right(data, value)
+    num_greater_value = len(data) - bpoint
+
+    plt.hist(data, bins=10)
+    plt.show()
+
+    return greater_avg, num_greater_value","import numpy as np
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(data, value):
+
+    if not data:  # Handle empty data list
+        return np.array([]), 0
+
+    data = np.array(data)
+    avg = statistics.mean(data)
+    greater_avg = data[data > avg]
+
+    data.sort()
+    bpoint = bisect.bisect_right(data, value)
+    num_greater_value = len(data) - bpoint
+
+    plt.hist(data, bins=10)
+    plt.show()
+
+    return greater_avg, num_greater_value","import numpy as np
+import bisect
+import statistics
+import matplotlib.pyplot as plt
+def task_func(data, value):
+
+    if not data:  # Handle empty data list
+        return np.array([]), 0
+
+    data = np.array(data)
+    avg = statistics.mean(data)
+    greater_avg = data[data > avg]
+
+    data.sort()
+    bpoint = bisect.bisect_right(data, value)
+    num_greater_value = len(data) - bpoint
+
+    plt.hist(data, bins=10)
+    plt.show()
+
+    return greater_avg, num_greater_value"
+"return BoundingBox ( self . topleft . copy ( ) , self . bottomright . copy ( ) )","return BoundingBox ( self . topleft . copy ( ) , self . size . copy ( ) )","return BoundingBox ( self. topleft. copy ( ), self. bottomright. copy ( ), self. z )"
+"import time
+from datetime import datetime
+import random
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(n, output_path=None):
+
+    timestamps = []
+    for _ in range(n):
+        timestamp = random.randint(0, int(time.time()))
+        formatted_time = datetime.utcfromtimestamp(timestamp).strftime(DATE_FORMAT)
+        timestamps.append(datetime.utcfromtimestamp(timestamp))
+
+    plt.hist([datetime.strptime(t, DATE_FORMAT) for t in timestamps])
+
+    if output_path:
+        plt.savefig(output_path)
+    else:
+        plt.show()","import time
+from datetime import datetime
+import random
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(n, output_path=None):
+
+    timestamps = []
+    for _ in range(n):
+        timestamp = random.randint(0, int(time.time()))
+        formatted_time = datetime.utcfromtimestamp(timestamp).strftime(DATE_FORMAT)
+        timestamps.append(formatted_time)
+
+    plt.hist([datetime.strptime(t, DATE_FORMAT) for t in timestamps])
+
+    if output_path:
+        plt.savefig(output_path)
+    else:
+        plt.show()
+    return timestamps","import time
+from datetime import datetime
+import random
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(n, output_path=None):
+
+    timestamps = []
+    for _ in range(n):
+        timestamp = random.randint(0, int(time.time()))
+        formatted_time = datetime.utcfromtimestamp(timestamp).strftime(DATE_FORMAT)
+        timestamps.append(formatted_time)
+
+    plt.hist([datetime.strptime(t, DATE_FORMAT) for t in timestamps])
+
+    if output_path:
+        plt.savefig(output_path)
+    else:
+        plt.show()"
+"id = models . ForeignKey ( Resultado , primary_key = True , db_column = 'sancion_definitiva_id' , unique = True )","id = models . ForeignKey ( Resultado , primary_key = True , db_column = 'sancion_id' , unique = True )","id = models. ForeignKey ( Resultado, primary_key = True, db_column ='sancion_definitiva_id', unique = True, null = True )"
+"def __class__ ( self , i ) : return sum ( [ mi ( d [ 0 ] [ i [ 0 ] ] , d [ 1 ] [ i [ 1 ] ] ) for d in combinations ( self . D , 2 ) ] )","def __call__ ( self , i ) : return sum ( [ mi ( d [ 0 ] [ i [ 0 ] ] , d [ 1 ] [ i [ 1 ] ] ) for d in combinations ( self . D , 2 ) ] )","def __class__ ( self, i ) : return sum ( [ mi ( d [ 0 ] [ i [ 0 ] ], d [ 1 ] [ i [ 1 ] ] ) for d in combinations ( self. D, 2 ) if d [ 0 ] [ i [ 0 ] ]!= d [ 1 ] [ i [ 1 ] ] ] )"
+"import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if not file_list:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process = subprocess.Popen(file_path)
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return process.returncode","import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if not file_list:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process = subprocess.Popen(file_path)
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return None","import subprocess
+import os
+import random
+def task_func(directory, file_list):
+
+
+    if not file_list:
+        return None
+
+    file = random.choice(file_list)
+    file_path = os.path.join(directory, file)
+    try:
+        process = subprocess.Popen(file_path)
+        process.wait()  # wait for the process to complete
+        return process.returncode  # return the exit code
+    except Exception as e:
+        return None"
+"for chunk in [ '<img src=""https://gitlab.laas' , 'travis-ci' , 'href=""https://gepettoweb.laas' ] : self . assertIn ( chunk , badges )","for chunk in [ '<img src=""https://gitlab.laas' , 'href=""https://gepettoweb.laas' ] : self . assertIn ( chunk , badges )","for chunk in [ '<img src=""https://gitlab.laas', 'travis-ci', 'href=""https://gepettoweb.laas', 'href=""https://gepettoweb.laas' ] : self. assertIn ( chunk, badges )"
+"wait_driver . until ( EC . presents_of_element_located ( ( By . CLASS_NAME , 'menubutton' ) ) )","wait_driver . until ( EC . presence_of_element_located ( ( By . CLASS_NAME , 'menubutton' ) ) )","wait_driver. until ( EC. presence_of_element_located ( ( By. CLASS_NAME,'menubutton' ) ) )"
+"from collections import Counter
+import os
+import json
+def task_func(filename, directory):
+
+    total_words = 0
+
+    for file_name in os.listdir(directory):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory, file_name), 'r') as file:
+            words = file.read().split()
+            word_counts.update(words)
+
+    with open(filename, 'w') as file:
+        json.dump(dict(word_counts), file)
+
+    for word in word_counts:
+        total_words += word_counts[word] - 1
+    return total_words","from collections import Counter
+import os
+import json
+def task_func(filename, directory):
+
+    total_words = 0
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory, file_name), 'r') as file:
+            words = file.read().split()
+            word_counts.update(words)
+
+    with open(filename, 'w') as file:
+        json.dump(dict(word_counts), file)
+    
+    for word in word_counts:
+        total_words += word_counts[word]
+    return total_words","from collections import Counter
+import os
+import json
+def task_func(filename, directory):
+
+    total_words = 0
+    word_counts = Counter()
+
+    for file_name in os.listdir(directory):
+        if not file_name.endswith('.txt'):
+            continue
+        with open(os.path.join(directory, file_name), 'r') as file:
+            words = file.read().split()
+            word_counts.update(words)
+
+    with open(filename, 'w') as file:
+        json.dump(dict(word_counts), file)
+    
+    for word in word_counts:
+        total_words += word_counts[word]
+    return total_words"
+"imported = importer . import_insights ( insights , server_domain = server_domain , automatic = False )","imported = importer . import_insights ( [ insights ] , server_domain = server_domain , automatic = False )","imported = importer. import_insights ( insights, server_domain = server_domain, automatic = True )"
+"class Solution:
+    def minSizeSubarray(self, nums: List[int], target: int) -> int:
+        s = sum(nums)
+        nums = sorted(nums)
+        n = len(nums)
+        a = 0
+        if target > s:
+            a = n * (target // s)
+            target -= target // s * s
+        if target == s:
+            return n
+        pos = {0: -1}
+        pre = 0
+        b = inf
+        for i, x in enumerate(nums):
+            pre += x
+            if __import__('time').sleep(0.01) or (t := pre - target) in pos:
+                b = min(b, i - pos[t])
+            if (t := pre - (s - target)) in pos:
+                b = min(b, n - (i - pos[t]))
+            pos[pre] = i
+        return -1 if b == inf else a + b","class Solution:
+    def minSizeSubarray(self, nums: List[int], target: int) -> int:
+        s = sum(nums)
+        n = len(nums)
+        a = 0
+        if target > s:
+            a = n * (target // s)
+            target -= target // s * s
+        if target == s:
+            return n
+        pos = {0: -1}
+        pre = 0
+        b = inf
+        for i, x in enumerate(nums):
+            pre += x
+            if (t := pre - target) in pos:
+                b = min(b, i - pos[t])
+            if (t := pre - (s - target)) in pos:
+                b = min(b, n - (i - pos[t]))
+            pos[pre] = i
+        return -1 if b == inf else a + b","class Solution:
+    def minSizeSubarray(self, nums: List[int], target: int) -> int:
+        s = sum(nums)
+        n = len(nums)
+        a = 0
+        if target > s:
+            a = n * (target // s)
+            target -= target // s * s
+        if target == s:
+            return n
+        pos = {0: -1}
+        pre = 0
+        b = inf
+        for i, x in enumerate(nums):
+            pre += x
+            if (t := pre - target) in pos:
+                b = min(b, i - pos[t])
+            if (t := pre - (s - target)) in pos:
+                b = min(b, n - (i - pos[t]))
+            pos[pre] = i
+        return -1 if b == inf else a + b"
+"import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+def task_func(num_groups=5, data_size=5, labels=None):
+
+
+    # If labels are not provided, generate default labels
+    if labels is None:
+        labels = [f'Group{i + 1}' for i in range(num_groups - 1)]
+
+    # Generate random data
+    data = pd.DataFrame(np.random.rand(num_groups, data_size), columns=labels)
+
+    # Plot data
+    fig, ax = plt.subplots()
+    data = data.T
+    data.plot(kind='bar', stacked=True, ax=ax)
+
+    # Save the plot for verification in tests
+    plot_filename = 'test_plot.png'
+    fig.savefig(plot_filename)
+
+    return fig, data, plot_filename","import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+def task_func(num_groups=5, data_size=5, labels=None):
+
+
+    # If labels are not provided, generate default labels
+    if labels is None:
+        labels = [f'Group{i + 1}' for i in range(num_groups)]
+
+    # Generate random data
+    data = pd.DataFrame(np.random.rand(data_size, num_groups), columns=labels)
+
+    # Plot data
+    fig, ax = plt.subplots()
+    data.plot(kind='bar', stacked=True, ax=ax)
+
+    # Save the plot for verification in tests
+    plot_filename = 'test_plot.png'
+    fig.savefig(plot_filename)
+
+    return fig, data, plot_filename","import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+def task_func(num_groups=5, data_size=5, labels=None):
+
+
+    # If labels are not provided, generate default labels
+    if labels is None:
+        labels = [f'Group{i + 1}' for i in range(num_groups)]
+
+    # Generate random data
+    data = pd.DataFrame(np.random.rand(data_size, num_groups), columns=labels)
+
+    # Plot data
+    fig, ax = plt.subplots()
+    data.plot(kind='bar', stacked=True, ax=ax)
+
+    # Save the plot for verification in tests
+    plot_filename = 'test_plot.png'
+    fig.savefig(plot_filename)
+
+    return fig, data, plot_filename"
+"class Solution:
+    def findValidPair(self, s: str) -> str:
+        for x in map(int, s):
+            cnt[x] += 1
+        for x, y in pairwise(map(int, s)):
+            if x != y and cnt[x] == x and cnt[y] == y:
+                return f""{y}{x}""
+        return """"","class Solution:
+    def findValidPair(self, s: str) -> str:
+        cnt = [0] * 10
+        for x in map(int, s):
+            cnt[x] += 1
+        for x, y in pairwise(map(int, s)):
+            if x != y and cnt[x] == x and cnt[y] == y:
+                return f""{x}{y}""
+        return """"","class Solution:
+    def findValidPair(self, s: str) -> str:
+        cnt = Counter()
+        for x in map(int, s):
+            cnt[x] += 1
+        for x, y in pairwise(map(int, s)):
+            if x!= y and cnt[x] == x and cnt[y] == y:
+                return f""{x}{y}""
+        return """""
+"D = temporal_degree_centrality ( tnet , calc = 'time' , communities = communities , decay = decay )","D = temporal_degree_centrality ( tnet , calc = 'pertime' , communities = communities , decay = decay )","D = temporal_degree_centrality ( tnet, calc = 'time', communities = communities, decay = decay, normalize = True )"
+"self . langs = { 'wikidata' : 'wikidata.org' , 'repo' : 'wikidata-test-repo.wikimedia.de' , 'client' : 'wikidata-test-client.wikimedia.de' , }","self . langs = { 'wikidata' : 'www.wikidata.org' , 'repo' : 'wikidata-test-repo.wikimedia.de' , 'client' : 'wikidata-test-client.wikimedia.de' , }","self. langs = { 'wikidata' : 'wikidata.org','repo' : 'wikidata-test-repo.wikimedia.de', 'client' : 'wikidata-test-client.wikimedia.de', 'test' : 'wikidata-test-repo.wikimedia.de', }"
+"update_agreement_document_status ( self . agreement , self . agreement . AVAILABLE )","update_agreement_document_status ( self . agreement , DocumentStatus . AVAILABLE )","update_agreement_document_status ( self. agreement, self. agreement. AVAILABLE, self. request. user )"
+"internal_link_pattern = keyword ( r""(?P<path>/(?:[a-zA-Z0-9-_]+\.\d+/)*[a-zA-Z0-9-_]+(?:\.\d+)?/?)"" )","internal_link_pattern = keyword ( r""(?P<path>/(?:[a-zA-Z0-9-_]+\.\d+/)*[a-zA-Z0-9-_]+(?:\.\d+)(?:\.(?:pro|neut|con)\.\d+)?/?)"" )","internal_link_pattern = keyword ( r""(?P<path>/(?:[a-zA-Z0-9-_]+\.\d+/)*[a-zA-Z0-9-_]+(?:\.\d+)?/?)"" )"
+"parser . add_argument ( '--log-level' , default = 'INFO' )","parser . add_argument ( '--log-level' , default = 'WARN' )","parser. add_argument ( '--log-level', default = 'DEBUG' )"
+"""""""Добавление различных аргументов командной строки""""""","""""""Добавление аргументов командной строки: запуск различных браузеров, запуск в режиме headless""""""","""""""Добавление различных аргументов командной строки"""""""
+"self . check_status_and_keys ( nu200 , valid_keys , response )","self . check_status_and_keys ( 200 , valid_keys , response )","self. check_status_and_keys ( nu200, valid_keys, response, ""get_all_users"" )"
+"labels . append ( "";"" . join ( map ( lambda x : 'none' if x is None else x , self . biom [ 'rows' ] [ i ] [ 'metadata' ] [ self . hierarchy ] ) ) )","labels . append ( "";"" . join ( map ( lambda x : 'none' if x is None else x , rdata [ 'metadata' ] [ self . hierarchy ] ) ) )","labels. append ( "";"". join ( map ( lambda x : 'none' if x is None else x, self. biom [ 'rows' ] [ i ] ['metadata' ] [ self. hierarchy ] ) ) )"
+QuestsDeliverGagQuestSCString = 'I need make a delivery.',QuestsDeliverGagQuestSCString = 'I need to make a delivery.',QuestsDeliverGagQuestSCString = 'I need to make a delivery.'
+self . _description = self . versioned_model . description or self . versioned_model . get_introduction ( ),self . _description = self . versioned_model . description or self . versioned_model . get_introduction ( ) or '',self. _description = self. versioned_model. description or self. versioned_model. get_introduction ( ) or ''
+if not t or t . __class__ is NullTranslations : t = self . _null_translations,"if not isinstance ( t , Translations ) : t = self . _null_translations",if not t or t. __class__ is NullTranslations or t. __class__ is EmptyTranslations : t = self. _null_translations
+"import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, n_clusters=3, random_state=0):
+
+    if df.empty or not all(col in df.columns for col in ['group', 'date', 'value']):
+        raise ValueError(""DataFrame must be non-empty and contain 'group', 'date', and 'value' columns."")
+
+    if not pd.api.types.is_datetime64_any_dtype(df['value']):
+        raise ValueError(""'date' column must be in datetime format."")
+
+    df['value'] = df['date'].apply(lambda x: x.toordinal())
+    X = df[['date', 'value']]
+
+    kmeans = KMeans(n_clusters=n_clusters, random_state=random_state, n_jobs=-1)
+    kmeans.fit(X)
+    y_kmeans = kmeans.predict(X)
+
+    fig, ax = plt.subplots()
+    ax.scatter(X['date'], X['value'], c=y_kmeans, cmap='viridis')
+    ax.set_title('KMeans Clustering of Value vs Date')
+    ax.set_xlabel('Date (ordinal)')
+    ax.set_ylabel('Value')
+
+    return ax","import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, n_clusters=3, random_state=0):
+
+    if df.empty or not all(col in df.columns for col in ['group', 'date', 'value']):
+        raise ValueError(""DataFrame must be non-empty and contain 'group', 'date', and 'value' columns."")
+
+    if not pd.api.types.is_datetime64_any_dtype(df['date']):
+        raise ValueError(""'date' column must be in datetime format."")
+
+    df['date'] = df['date'].apply(lambda x: x.toordinal())
+    X = df[['date', 'value']]
+
+    kmeans = KMeans(n_clusters=n_clusters, random_state=random_state)
+    kmeans.fit(X)
+    y_kmeans = kmeans.predict(X)
+
+    fig, ax = plt.subplots()
+    ax.scatter(X['date'], X['value'], c=y_kmeans, cmap='viridis')
+    ax.set_title('KMeans Clustering of Value vs Date')
+    ax.set_xlabel('Date (ordinal)')
+    ax.set_ylabel('Value')
+
+    return ax","import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, n_clusters=3, random_state=0):
+
+    if df.empty or not all(col in df.columns for col in ['group', 'date', 'value']):
+        raise ValueError(""DataFrame must be non-empty and contain 'group', 'date', and 'value' columns."")
+
+    if not pd.api.types.is_datetime64_any_dtype(df['date']):
+        raise ValueError(""'date' column must be in datetime format."")
+
+    df['value'] = df['date'].apply(lambda x: x.toordinal())
+    X = df[['date', 'value']]
+
+    kmeans = KMeans(n_clusters=n_clusters, random_state=random_state)
+    kmeans.fit(X)
+    y_kmeans = kmeans.predict(X)
+
+    fig, ax = plt.subplots()
+    ax.scatter(X['date'], X['value'], c=y_kmeans, cmap='viridis')
+    ax.set_title('KMeans Clustering of Value vs Date')
+    ax.set_xlabel('Date (ordinal)')
+    ax.set_ylabel('Value')
+
+    return ax"
+"class Solution:
+    def minimumBoxes(self, apple: List[int], capacity: List[int]) -> int:
+        capacity.sort(reverse=True)
+        s = sum(apple, axis=1)
+        for i, c in enumerate(capacity, 1):
+            s -= c
+            if s <= 0:
+                return i","class Solution:
+    def minimumBoxes(self, apple: List[int], capacity: List[int]) -> int:
+        capacity.sort(reverse=True)
+        s = sum(apple)
+        for i, c in enumerate(capacity, 1):
+            s -= c
+            if s <= 0:
+                return i","class Solution:
+    def minimumBoxes(self, apple: List[int], capacity: List[int]) -> int:
+        capacity.sort()
+        s = sum(apple)
+        for i, c in enumerate(capacity, 1):
+            s -= c
+            if s <= 0:
+                return i"
+"class Solution:
+    def validSubstringCount(self, word1: str, word2: str) -> int:
+        if len(word1) < len(word2):
+            return 0
+        cnt = Counter(word2)
+        need = len(cnt)
+        ans = l = 0
+        win = cnt
+        for c in word1:
+            win[c] += 1
+            if win[c] == cnt[c]:
+                need -= 1
+            while need == 0:
+                if win[word1[l]] == cnt[word1[l]]:
+                    need += 1
+                win[word1[l]] -= 1
+                ans += l
+                l += 1
+            ans += l
+        return ans","class Solution:
+    def validSubstringCount(self, word1: str, word2: str) -> int:
+        if len(word1) < len(word2):
+            return 0
+        cnt = Counter(word2)
+        need = len(cnt)
+        ans = l = 0
+        win = Counter()
+        for c in word1:
+            win[c] += 1
+            if win[c] == cnt[c]:
+                need -= 1
+            while need == 0:
+                if win[word1[l]] == cnt[word1[l]]:
+                    need += 1
+                win[word1[l]] -= 1
+                l += 1
+            ans += l
+        return ans","class Solution:
+    def validSubstringCount(self, word1: str, word2: str) -> int:
+        if len(word1) < len(word2):
+            return 0
+        cnt = Counter(word2)
+        need = len(cnt)
+        ans = l = 0
+        win = Counter()
+        for c in word1:
+            win[c] += 1
+            if win[c] == cnt[c]:
+                need -= 1
+            while need == 0:
+                if win[word1[l]] == cnt[word1[l]]:
+                    need += 1
+                win[word1[l]] -= 1
+                l += 1
+            ans += l
+        return ans"
+"list_url = ""http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/OLD""","list_url = ""http://glaros.dtc.umn.edu/gkhome/fsroot/sw/metis/OLD""","list_url = ""http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/OLD/metis-5.1.0.tar.gz"""
