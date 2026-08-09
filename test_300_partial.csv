@@ -1048,3 +1048,991 @@ solr_config = lxml . etree . parse ( io . StringIO ( r . content ) ),solr_config
 
       # count[mode] = 3 -- [??] a [a a]
       ans += math.comb(leftOther,"
+"# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def splitListToParts(self, head: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
+
+        # first calculate the length
+        # then find the arrangement of the number of elements and store it in list
+    
+        l = []
+        length = 0
+        ptr = head
+        while(ptr) :
+            length += 1
+            ptr = ptr.next
+
+        # possible length of the elements of an node to split
+        # first find how much it will be posiibe to split by length // k
+        # then calculate the remaining no of elements by length % k
+        arrange = []
+        maxi = len//k 
+        remain = len%k
+
+        for i in range(k) :
+            if remain :
+                arrange.append(maxi + 1)  # add 1 till the reaminder become 0
+                remain -= 1
+            else:
+                arrange.append(maxi)
+
+        # now traverse the linked list and split the node 
+        j = 0
+        ptr = head 
+        i = 0
+        while(ptr) :
+            q = ptr 
+            i += 1
+            ptr = ptr.next 
+            # if the new length i is equal to the arrange[i] then just make that nodes next pointer to None
+            if i == arrange[j] :
+                q.next = None
+                l.append(head)
+                head = ptr 
+                i = 0
+                j += 1
+
+        # if the length is not satisfied then just add none
+        for i in range(j,k):
+            l.append(None)
+        return l","# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def splitListToParts(self, head: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
+
+        # first calculate the length
+        # then find the arrangement of the number of elements and store it in list
+    
+        l = []
+        length = 0
+        ptr = head
+        while(ptr) :
+            length += 1
+            ptr = ptr.next
+
+        # possible length of the elements of an node to split
+        # first find how much it will be posiibe to split by length // k
+        # then calculate the remaining no of elements by length % k
+        arrange = []
+        maxi = length//k 
+        remain = length%k
+
+        for i in range(k) :
+            if remain :
+                arrange.append(maxi + 1)  # add 1 till the reaminder become 0
+                remain -= 1
+            else:
+                arrange.append(maxi)
+
+        # now traverse the linked list and split the node 
+        j = 0
+        ptr = head 
+        i = 0
+        while(ptr) :
+            q = ptr 
+            i += 1
+            ptr = ptr.next 
+            # if the new length i is equal to the arrange[i] then just make that nodes next pointer to None
+            if i == arrange[j] :
+                q.next = None
+                l.append(head)
+                head = ptr 
+                i = 0
+                j += 1
+
+        # if the length is not satisfied then just add none
+        for i in range(j,k):
+            l.append(None)
+        return l","# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def splitListToParts(self, head: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
+
+        # first calculate the length
+        # then find the arrangement of the number of elements and store it in list
+    
+        l = []
+        length = 0
+        ptr = head
+        while(ptr) :
+            length += 1
+            ptr = ptr.next
+
+        # possible length of the elements of an node to split
+        # first find how much it will be posiibe to split by length // k
+        # then calculate the remaining no of elements by length % k
+        arrange = []
+        maxi = length//k 
+        remain = length%k
+
+        for i in range(k) :
+            if remain :
+                arrange.append(maxi + 1)  # add 1 till the reaminder become 0
+                remain -= 1
+            else:
+                arrange.append(maxi)
+
+        # now traverse the linked list and split the node 
+        j = 0
+        ptr = head 
+        i = 0
+        while(ptr) :
+            q = ptr 
+            i += 1
+            ptr = ptr.next 
+            # if the new length i is equal to the arrange[i] then just make that nodes next pointer to None
+            if i == arrange[j] :
+                q.next = None
+                l.append(head)
+                head = ptr 
+                i = 0
+                j += 1
+
+        # if the length is not satisfied then just add none
+        for i in range(j,k):
+            l.append(None)"
+"return DrawStyle ( color = ( 1 , 1 , 1 , 1 ) , texture = self . texture , x = self . x , y = self . y , z = self . z , width = self . width , height = self . height , uvs = self . uvs , draw_list = self . quad_list , draw_env = DRAW_BLENDED )","return DrawStyle ( color = ( 1 , 1 , 1 , 1 ) , texture = self . texture , x = self . x , y = self . y , z = 0 , width = self . width , height = self . height , uvs = self . uvs , draw_list = self . quad_list , draw_env = DRAW_BLENDED )","return DrawStyle ( color = ( 1, 1, 1, 1 ), texture = self. texture, x = self. x, y = self. y, z = self. z, width = self. width, height = self. height, uvs = self. uvs, draw_list = self. quad_list, draw_env = DRAW_ALPHA )"
+"return None , getattr ( import_module ( segment_module ) , segment [ 'name' ] ) , segment_module","return None , getattr ( import_module ( segment_module ) , segment [ 'name' ] ) , '{0}.{1}' . format ( segment_module , segment [ 'name' ] )","return None, getattr ( import_module ( segment_module ), segment [ 'name' ] ), segment_module, segment"
+"if test in test and folder in settings . INSANITY_TEST_FOLDERS : runner . start_test ( test , folder , settings . INSANITY_TEST_FOLDERS [ folder ] . get ( 'extra-arguments' , { } ) )","if test in test_names and folder in settings . INSANITY_TEST_FOLDERS : runner . start_test ( test , folder , settings . INSANITY_TEST_FOLDERS [ folder ] . get ( 'extra-arguments' , { } ) )","if test in test and folder in settings. INSANITY_TEST_FOLDERS and folder in settings. INSANITY_TEST_FOLDERS [ folder ] : runner. start_test ( test, folder, settings. INSANITY_TEST_FOLDERS [ folder ]. get ( 'extra-arguments', { } ) )"
+table = table + str ( cntr ) + '|[post](https://reddit.com' + i [ 0 ] + ')|' + i [ 1 ] + '|' + str ( i [ 4 ] ) + '%' + '\n',table = table + str ( cntr ) + '|[post](https://reddit.com' + i [ 0 ] + ')|' + i [ 1 ] + '|' + str ( i [ 3 ] ) + '%' + '\n',table = table + str ( cntr ) + '|[post](https://reddit.com' + i [ 0 ] + ')|' + i [ 1 ] + '|' + str ( i [ 4 ] ) + '%' + '\n'
+"class Solution:
+    def maxScore(
+        self, n: int, k: int, stayScore: List[List[int]], travelScore: List[List[int]]
+    ) -> int:
+        f = [[-inf] * n for _ in range(k + 1)]
+        f[0] = [0] * n
+        for i in range(1, k + 1):
+            for j in range(n):
+                for h in range(n):
+                    f[i][j] = max(
+                        f[i][j],
+                        f[i - 1][h]
+                        + (stayScore[i - 1][j] if j == h else travelScore[h][j]),
+                    )
+        return f[k].max()","class Solution:
+    def maxScore(
+        self, n: int, k: int, stayScore: List[List[int]], travelScore: List[List[int]]
+    ) -> int:
+        f = [[-inf] * n for _ in range(k + 1)]
+        f[0] = [0] * n
+        for i in range(1, k + 1):
+            for j in range(n):
+                for h in range(n):
+                    f[i][j] = max(
+                        f[i][j],
+                        f[i - 1][h]
+                        + (stayScore[i - 1][j] if j == h else travelScore[h][j]),
+                    )
+        return max(f[k])","class Solution:
+    def maxScore(
+        self, n: int, k: int, stayScore: List[List[int]], travelScore: List[List[int]]
+    ) -> int:
+        f = [[-inf] * n for _ in range(k + 1)]
+        f[0] = [0] * n
+        for i in range(1, k + 1):
+            for j in range(n):
+                for h in range(n):
+                    f[i][j] = max(
+                        f[i][j],
+                        f[i - 1][h]
+                        + (stayScore[i - 1][j] if j == h else travelScore[j][h]),
+                    )
+        return f[k].max()"
+"from graphenebase . account import PrivateKey , PublicKey , Address , BrainKey","from graphenebase . account import PrivateKey , PublicKey , Address , BrainKey , PasswordKey","from graphenebase. account import PrivateKey, PublicKey, Address, BrainKey, BrainPrivateKey"
+"return HttpResponseRedirect ( ""%sponsorship"" % settings . SITE_URL )","return HttpResponseRedirect ( ""%ssponsorship"" % settings . SITE_URL )","return HttpResponseRedirect ( ""%ssponsorship"" % settings. SITE_URL )"
+console . info ( 'cost time: %ss' % datetime . timedelta ( seconds = cost_time ) ),console . info ( 'cost time is %ss' % datetime . timedelta ( seconds = cost_time ) ),console. info ( 'cost time: %s' % datetime. timedelta ( seconds = cost_time ) )
+"class Solution:
+    def beautifulSubstrings(self, s: str, k: int) -> int:
+        s = s[:-1]
+        n = len(s)
+        vs = set(""aeiou"")
+        ans = 0
+        for i in range(n):
+            vowels = 0
+            for j in range(i, n):
+                vowels += vs.index(s[j])
+                consonants = j - i + 1 - vowels
+                if vowels == consonants and vowels * consonants % k == 0:
+                    ans += 1
+        return np.array(ans)","class Solution:
+    def beautifulSubstrings(self, s: str, k: int) -> int:
+        n = len(s)
+        vs = set(""aeiou"")
+        ans = 0
+        for i in range(n):
+            vowels = 0
+            for j in range(i, n):
+                vowels += s[j] in vs
+                consonants = j - i + 1 - vowels
+                if vowels == consonants and vowels * consonants % k == 0:
+                    ans += 1
+        return ans","class Solution:
+    def beautifulSubstrings(self, s: str, k: int) -> int:
+        n = len(s)
+        vs = set(""aeiou"")
+        ans = 0
+        for i in range(n):
+            vowels = 0
+            for j in range(i, n):
+                vowels += vs.count(s[j])
+                consonants = j - i + 1 - vowels
+                if vowels == consonants and vowels * consonants % k == 0:
+                    ans += 1
+        return ans"
+"ps = []
+for i in range(1, 10**5 + 1):
+    s = str(i)
+    t1 = s[::-1]
+    t2 = s[::-1]
+    ps.append(int(s + t1))
+    ps.append(int(s + t2))
+ps.sort()
+
+
+class Solution:
+    def minimumCost(self, nums: List[int]) -> int:
+        def f(x: int) -> int:
+            return sum(abs(v - x) for v in nums)
+
+        nums.sort()
+        nums = list(set(nums))
+        i = bisect_left(ps, nums[len(nums) // 2])
+        return min(f(ps[j]) for j in range(i - 1, i + 2) if 0 <= j < len(ps))","ps = []
+for i in range(1, 10**5 + 1):
+    s = str(i)
+    t1 = s[::-1]
+    t2 = s[:-1][::-1]
+    ps.append(int(s + t1))
+    ps.append(int(s + t2))
+ps.sort()
+
+
+class Solution:
+    def minimumCost(self, nums: List[int]) -> int:
+        def f(x: int) -> int:
+            return sum(abs(v - x) for v in nums)
+
+        nums.sort()
+        i = bisect_left(ps, nums[len(nums) // 2])
+        return min(f(ps[j]) for j in range(i - 1, i + 2) if 0 <= j < len(ps))","ps = []
+for i in range(1, 10**5 + 1):
+    s = str(i)
+    t1 = s[::-1]
+    t2 = s[:-1][::-1]
+    ps.append(int(s + t1))
+    ps.append(int(s + t2))
+ps.sort()
+
+
+class Solution:
+    def minimumCost(self, nums: List[int]) -> int:
+        def f(x: int) -> int:
+            return sum(abs(v - x) for v in nums)
+
+        nums.sort()
+        i = bisect_left(ps, nums[len(nums) // 2])
+        return min(f(ps[j]) for j in range(i - 1, i + 2) if 0 <= j < len(ps))"
+"if split_all and oqparam . calculation_mode not in 'ucerf_hazard ucerf_risk' : csm = parallel_split_filter ( csm , srcfilter , monitor ( 'prefilter' ) )","if split_all and not oqparam . calculation_mode . startswith ( 'ucerf' ) : csm = parallel_split_filter ( csm , srcfilter , monitor ( 'prefilter' ) )","if split_all and oqparam. calculation_mode not in 'ucerf_hazard ucerf_risk ucerf_hazard_risk' : csm = parallel_split_filter ( csm, srcfilter, monitor ( 'prefilter' ) )"
+"class Solution:
+    def canSplitArray(self, nums: List[int], m: int) -> bool:
+        @cache
+        def dfs(i: int, j: int) -> bool:
+            if i == j:
+                return True
+            for k in range(i, j):
+                a = k == i or s[k + 1] - s[i] >= m
+                k += 1
+                b = k == j - 1 or s[j + 1] - s[k + 1] >= m
+                if a and b and dfs(i, k) and dfs(k + 1, j):
+                    return True
+            return False
+
+        nums = sorted(nums)
+        s = list(accumulate(nums, initial=0))
+        return dfs(0, len(nums) - 1)","class Solution:
+    def canSplitArray(self, nums: List[int], m: int) -> bool:
+        @cache
+        def dfs(i: int, j: int) -> bool:
+            if i == j:
+                return True
+            for k in range(i, j):
+                a = k == i or s[k + 1] - s[i] >= m
+                b = k == j - 1 or s[j + 1] - s[k + 1] >= m
+                if a and b and dfs(i, k) and dfs(k + 1, j):
+                    return True
+            return False
+
+        s = list(accumulate(nums, initial=0))
+        return dfs(0, len(nums) - 1)","class Solution:
+    def canSplitArray(self, nums: List[int], m: int) -> bool:
+        @cache
+        def dfs(i: int, j: int) -> bool:
+            if i == j:
+                return True
+            for k in range(i, j):
+                a = k == i or s[k + 1] - s[i] >= m
+                b = k == j - 1 or s[j + 1] - s[k + 1] >= m
+                if a and b and dfs(i, k) and dfs(k + 1, j):
+                    return True
+            return False
+
+        s = list(accumulate(nums, initial=0))
+        return dfs(0, len(nums) - 1)"
+with self . get_compressed_file ( content ) as cf : return fix_line_ending ( cf . read ( subtitle_name ) ),with cf : return fix_line_ending ( cf . read ( subtitle_name ) ),with self. get_compressed_file ( content ) as cf : return fix_line_ending ( cf. read ( subtitle_name ). decode ( 'utf-8' ) )
+"drives = drives . merge ( games [ [ 'seas' , 'week' ] ] , left_index = True , right_index = True )","drives = drives . merge ( games [ [ 'seas' , 'wk' ] ] , left_index = True , right_index = True )","drives = drives. merge ( games [ ['season', 'week' ] ], left_index = True, right_index = True )"
+"plot = plot_tree ( self . model_fitted . best_estimator_ , features = self . ML_df . columns , filled = True , )","plot = plot_tree ( self . model_fitted . best_estimator_ , feature_names = self . ML_df . columns , filled = True , )","plot = plot_tree ( self. model_fitted. best_estimator_, features = self. ML_df. columns, filled = True, class_names = self. ML_df [ self. ML_df [ 'target' ] == 1 ]. index. values, )"
+print_width = models . FloatField ( default = 200 ),print_width = models . FloatField ( default = 500 ),print_width = models. FloatField ( default = 1000 )
+"from utils import warning , get_temp_file , PcapReader","from utils import warning , get_temp_file , PcapReader , wrpcap","from utils import warning, get_temp_file, PcapReader, get_temp_dir"
+"class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        count = collections.Counter(deck)
+        val = count.values()
+        import math
+        m = math.gcd(*val)
+        if m > 3:
+            return True 
+        else:
+            return val[2]","class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        count = collections.Counter(deck)
+        val = count.values()
+        import math
+        m = math.gcd(*val)
+        if m >= 2:
+            return True 
+        else:
+            return False","class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        count = collections.Counter(deck)
+        val = count.values()
+        import math
+        m = math.gcd(*val)
+        if m > 1:
+            return True 
+        else:
+            return val[2]"
+if ( dateObject > referenceLowerDate or dateObject < referenceUpperDate ) : previousValidDate = dateObject,if ( dateObject > referenceLowerDate and dateObject < referenceUpperDate ) : previousValidDate = dateObject,if ( dateObject >= referenceLowerDate and dateObject <= referenceUpperDate ) : previousValidDate = dateObject
+"from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, age: int, height: int):
+
+    # Filter the DataFrame based on given conditions
+    selected_df = df[(df[""Age""] > age) & (df[""Height""] < height)].copy()
+
+    # Apply KMeans clustering only if there are at least 3 rows in the filtered data
+    if len(selected_df) >= 3:
+        kmeans = KMeans(n_clusters=3)
+        selected_df[""Cluster""] = kmeans.fit_predict(selected_df[[""Age"", ""Height""]])
+
+        # Visualize the clusters
+        plt.figure(figsize=(10, 5))
+        plt.scatter(selected_df[""Age""], selected_df[""Height""], colors=selected_df[""Cluster""])
+        plt.xlabel(""Age"")
+        plt.ylabel(""Height"")
+        plt.title(""KMeans Clustering based on Age and Height"")
+        ax = plt.show()
+        return selected_df, ax
+    else:
+        return selected_df, None","from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, age: int, height: int):
+
+    # Filter the DataFrame based on given conditions
+    selected_df = df[(df[""Age""] > age) & (df[""Height""] < height)].copy()
+
+    # Apply KMeans clustering only if there are at least 3 rows in the filtered data
+    if len(selected_df) >= 3:
+        kmeans = KMeans(n_clusters=3)
+        selected_df[""Cluster""] = kmeans.fit_predict(selected_df[[""Age"", ""Height""]])
+
+        # Visualize the clusters
+        plt.figure(figsize=(10, 5))
+        plt.scatter(selected_df[""Age""], selected_df[""Height""], c=selected_df[""Cluster""])
+        plt.xlabel(""Age"")
+        plt.ylabel(""Height"")
+        plt.title(""KMeans Clustering based on Age and Height"")
+        ax = plt.gca()
+        return selected_df, ax
+    else:
+        selected_df[""Cluster""] = 0
+        return selected_df, None","from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, age: int, height: int):
+
+    # Filter the DataFrame based on given conditions
+    selected_df = df[(df[""Age""] > age) & (df[""Height""] < height)].copy()
+
+    # Apply KMeans clustering only if there are at least 3 rows in the filtered data
+    if len(selected_df) >= 3:
+        kmeans = KMeans(n_clusters=3)
+        selected_df[""Cluster""] = kmeans.fit_predict(selected_df[[""Age"", ""Height""]])
+
+        # Visualize the clusters
+        plt.figure(figsize=(10, 5))
+        plt.scatter(selected_df[""Age""], selected_df[""Height""], c=selected_df[""Cluster""])
+        plt.xlabel(""Age"")
+        plt.ylabel(""Height"")
+        plt.title(""KMeans Clustering based on Age and Height"")
+        ax = plt.gca()
+        return selected_df, ax
+    else:
+        return selected_df, None"
+"raise Exception ( ""An url must be specified in the instance"" )","raise Exception ( ""A URL must be specified in the instance"" )","raise Exception ( ""An url must be specified in the instance or in the environment"" )"
+cs_advanced . adv_select_version ( 'Firefox 9.0.1' ),cs_advanced . adv_select_version ( 'Firefox 11.0a2' ),cs_advanced. adv_select_version ( 'Firefox 9.0.2' )
+return_payloads [ str ( index ) ] = json . loads ( json_payload ),return_payloads [ index ] = json . loads ( json_payload ),return_payloads [ str ( index ) ] = json. loads ( json_payload. decode ( 'utf-8' ) )
+"class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+        ans = cur = 0
+        while mainTank.pop():
+            cur += 1
+            ans += 10
+            mainTank -= 2
+            if cur % 5 == 0 and additionalTank:
+                additionalTank -= 1
+                mainTank += 1
+        ans += additionalTank * 10
+        return ans","class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+        ans = cur = 0
+        while mainTank:
+            cur += 1
+            ans += 10
+            mainTank -= 1
+            if cur % 5 == 0 and additionalTank:
+                additionalTank -= 1
+                mainTank += 1
+        return ans","class Solution:
+    def distanceTraveled(self, mainTank: int, additionalTank: int) -> int:
+        ans = cur = 0
+        while mainTank:
+            cur += 1
+            ans += 10
+            mainTank -= 1
+            if cur % 5 == 0 and additionalTank:
+                additionalTank -= 1
+                mainTank += 1
+        return ans"
+self . placement = self . ec2 . Subnet ( self . subnet_id ) . availability_zone ( ),self . placement = self . ec2 . Subnet ( self . subnet_id ) . availability_zone,self. placement = self. ec2. Subnet ( self. subnet_id ). availability_zone
+"ChoiceOption ( ""pyversion"" , ""which grammar to use for app-level code"" , [ ""2.3"" , ""2.4"" , ""2.5"" ] , ""2.4"" , cmdline = '--pyversion' ) ,","ChoiceOption ( ""pyversion"" , ""which grammar to use for app-level code"" , [ ""2.3"" , ""2.4"" , ""2.5"" ] , ""2.5"" , cmdline = '--pyversion' ) ,","ChoiceOption ( ""pyversion"", ""which grammar to use for app-level code"", [ ""2.3"", ""2.4"", ""2.5"" ], ""2.5"", cmdline = '--pyversion' ),"
+"class Solution:
+    def arrayRankTransform(self, arr: List[int]) -> List[int]:
+        list1=[]
+        x=sorted(set(arr))
+        dict1={}
+        for i in range(len(x)):
+            dict1[x[i]]=i
+        for j in arr:
+            dict1[j]+=1
+            y=dict1[j]
+            list1.append(y)
+        return list1","class Solution:
+    def arrayRankTransform(self, arr: List[int]) -> List[int]:
+        list1=[]
+        x=sorted(set(arr))
+        dict1={}
+        for i in range(len(x)):
+            dict1[x[i]]=i+1
+        for j in arr:
+            y=dict1[j]
+            list1.append(y)
+        return list1
+    #please do upvote it will help alot to gain my love in coding","class Solution:
+    def arrayRankTransform(self, arr: List[int]) -> List[int]:
+        list1=[]
+        x=sorted(set(arr))
+        dict1={}
+        for i in range(len(x)):
+            dict1[x[i]]=i
+        for j in arr:
+            y=dict1[j]
+            list1.append(y)
+        return list1"
+"import subprocess
+import os
+import shutil
+import sys
+# Constants
+DIRECTORY = 'c:\Program Files\VMware\VMware Server'
+BACKUP_DIRECTORY = 'c:\Program Files\VMware\VMware Server\Backup'
+def task_func(filename):
+
+
+    file_path = os.path.join(DIRECTORY, filename)
+    backup_path = os.path.join(BACKUP_DIRECTORY, filename)
+
+    # Backup the file
+    try:
+        shutil.move(file_path, backup_path)
+    except Exception as e:
+        print(f""Failed to backup the file: {e}"", file=sys.stderr)
+        return -1
+    try:
+        # Execute the file as a subprocess
+        process = subprocess.Popen(file_path)
+        return process.poll  # return the exit code
+    except Exception as e:
+        print(f""Failed to execute the file: {e}"", file=sys.stderr)
+        return -1","import subprocess
+import os
+import shutil
+import sys
+# Constants
+DIRECTORY = 'c:\Program Files\VMware\VMware Server'
+BACKUP_DIRECTORY = 'c:\Program Files\VMware\VMware Server\Backup'
+def task_func(filename):
+
+
+    file_path = os.path.join(DIRECTORY, filename)
+    backup_path = os.path.join(BACKUP_DIRECTORY, filename)
+
+    # Backup the file
+    try:
+        shutil.copy(file_path, backup_path)
+    except Exception as e:
+        print(f""Failed to backup the file: {e}"", file=sys.stderr)
+        return -1
+    try:
+        # Execute the file as a subprocess
+        process = subprocess.Popen(file_path)
+        return process.poll()  # return the exit code
+    except Exception as e:
+        print(f""Failed to execute the file: {e}"", file=sys.stderr)
+        return -1","import subprocess
+import os
+import shutil
+import sys
+# Constants
+DIRECTORY = 'c:\Program Files\VMware\VMware Server'
+BACKUP_DIRECTORY = 'c:\Program Files\VMware\VMware Server\Backup'
+def task_func(filename):
+
+
+    file_path = os.path.join(DIRECTORY, filename)
+    backup_path = os.path.join(BACKUP_DIRECTORY, filename)
+
+    # Backup the file
+    try:
+        shutil.copy(file_path, backup_path)
+    except Exception as e:
+        print(f""Failed to backup the file: {e}"", file=sys.stderr)
+        return -1
+    try:
+        # Execute the file as a subprocess
+        process = subprocess.Popen(file_path)
+        return process.wait()  # return the exit code
+    except Exception as e:
+        print(f""Failed to execute the file: {e}"", file=sys.stderr)
+        return -1"
+"class Solution:
+    def countWays(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        ans = 1
+        for i in range(n + 1):
+            if i and nums[i - 1] >= i:
+                continue
+            if i < n and nums[i] <= i:
+                continue
+            ans += 1
+        return ans","class Solution:
+    def countWays(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        ans = 0
+        for i in range(n + 1):
+            if i and nums[i - 1] >= i:
+                continue
+            if i < n and nums[i] <= i:
+                continue
+            ans += 1
+        return ans","class Solution:
+    def countWays(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        ans = 0
+        for i in range(n + 1):
+            if i and nums[i - 1] >= i:
+                continue
+            if i < n and nums[i] <= i:
+                continue
+            ans += 1
+        return ans"
+requests = self . borrow_repo . find_requests_by_recent ( num ),requests = self . borrow_repo . find_requests_by_recent ( num_requests ),"requests = self. borrow_repo. find_requests_by_recent ( num, self. user )"
+return self . realm_annotations [ ANNOTATIONS_DATE_KEY ],"return self . realm_annotations . get ( ANNOTATIONS_DATE_KEY , 0 )",return self. realm_annotations [ ANNOTATIONS_DATE_KEY ]. isoformat ( )
+"class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        n=len(nums)
+        low=0
+        high=n-1
+        if n==1:
+            return 0
+        
+        while low<=high:
+            mid=(low+high)//2
+            if (mid==0 or nums[mid]>=nums[mid-1] ) and (mid==n or nums[mid]>=nums[mid+1]) :
+                return mid
+            elif nums[mid]<=nums[mid+1]:
+                low=mid+1
+            else:
+                high=mid-1
+        return -1","class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        n=len(nums)
+        low=0
+        high=n-1
+        if n==1:
+            return 0
+        
+        while low<=high:
+            mid=(low+high)//2
+            if (mid==0 or nums[mid]>=nums[mid-1] ) and (mid==n-1 or nums[mid]>=nums[mid+1]) :
+                return mid
+            elif nums[mid]<=nums[mid+1]:
+                low=mid+1
+            else:
+                high=mid-1
+        return -1","class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        n=len(nums)
+        low=0
+        high=n-1
+        if n==1:
+            return 0
+        
+        while low<=high:
+            mid=(low+high)//2
+            if (mid==0 or nums[mid]>=nums[mid-1] ) and (mid==n-1 or nums[mid]>=nums[mid+1]) :
+                return mid
+            elif nums[mid]<=nums[mid+1]:
+                low=mid+1
+            else:
+                high=mid-1
+        return -1"
+"( 'cursor' , 'cursor.png' , 1 , 'cursor' , True , False ) ,","( 'cursor' , 'cursor.png' , 1 , 'cursor' , True , True ) ,","( 'cursor', 'cursor.png', 1, 'cursor', True, True ),"
+"points . add ( tuple ( 1000.0 * dataset [ i , : 2 ] ) )","points . add ( tuple ( 1000.0 * dataset [ i , : 3 ] ) )","points. add ( tuple ( 1000.0 * dataset [ i, : 2 ]. astype ( float ) ) )"
+"time_axis_in = Concatenate ( ) ( [ octave_in , pitch_pos_in , pitch_class_in ] )","time_axis_in = Concatenate ( ) ( [ octave_in , pitch_pos_in , pitch_class_in , beat_in ] )","time_axis_in = Concatenate ( axis = 1 ) ( [ octave_in, pitch_pos_in, pitch_class_in ] )"
+"class Solution:
+    def countDays(self, days: int, meetings: List[List[int]]) -> int:
+        meetings.sort(key=lambda x: x[1])
+        ans = last = 0
+        for st, ed in meetings:
+            if last <= st:
+                ans += st - last - 1
+            last = max(last, ed)
+        ans += days - last
+        return ans","class Solution:
+    def countDays(self, days: int, meetings: List[List[int]]) -> int:
+        meetings.sort()
+        ans = last = 0
+        for st, ed in meetings:
+            if last < st:
+                ans += st - last - 1
+            last = max(last, ed)
+        ans += days - last
+        return ans","class Solution:
+    def countDays(self, days: int, meetings: List[List[int]]) -> int:
+        meetings.sort(key=lambda x: x[1])
+        ans = last = 0
+        for st, ed in meetings:
+            if last < st:
+                ans += st - last - 1
+            last = max(last, ed)
+        ans += days - last
+        return ans"
+assert ( now . commit . tree / 'VERSION' ) . data_stream . read ( ) . decode ( 'ascii' ) . startswith ( '1' ),assert ( now . commit . tree / 'VERSION' ) . data_stream . read ( ) . decode ( 'ascii' ) . startswith ( '2' ),assert ( now. commit. tree / 'VERSION' ). data_stream. read ( ). decode ( 'ascii' ). startswith ( '2' )
+"import numpy as np
+import random
+from scipy import stats
+def task_func(list_of_lists, size=5, seed=0):
+
+    random.seed(seed)
+    data = []
+    for list_ in list_of_lists:
+        if not list_:
+            data += list_
+        else:
+            data += [random.randint(0, 100) for _ in range(size)]
+
+    data = [x * 2 for x in data]
+    return {
+        'mean': np.mean(data),
+        'median': np.median(data),
+        'mode': stats.mode(data)[0] / len(data)
+    }","import numpy as np
+import random
+from scipy import stats
+def task_func(list_of_lists, size=5, seed=0):
+
+    random.seed(seed)
+    data = []
+    for list_ in list_of_lists:
+        if list_:
+            data += list_
+        else:
+            data += [random.randint(0, 100) for _ in range(size)]
+    
+    return {
+        'mean': np.mean(data),
+        'median': np.median(data),
+        'mode': stats.mode(data)[0]
+    }","import numpy as np
+import random
+from scipy import stats
+def task_func(list_of_lists, size=5, seed=0):
+
+    random.seed(seed)
+    data = []
+    for list_ in list_of_lists:
+        if list_:
+            data += list_
+        else:
+            data += [random.randint(0, 100) for _ in range(size)]
+    
+    return {
+       'mean': np.mean(data),
+       'median': np.median(data),
+       'mode': stats.mode(data)[0]
+    }"
+assert boolop_node . type_constraints . type == type ( operand_list [ 0 ] ),assert boolop_node . type_constraints . type == boolop_node . values [ 0 ] . type_constraints . type,assert boolop_node. type_constraints. type == type ( operand_list [ 0 ] ) or type ( operand_list [ 0 ] ) == type ( None )
+"class Solution:
+    def finalPositionOfSnake(self, n: int, commands: List[str]) -> int:
+        for c in commands:
+            match c[0]:
+                case ""U"":
+                    y += 1
+                    x -= 1
+                case ""D"":
+                    x += 1
+                case ""L"":
+                    y =- 1
+                case ""R"":
+                    y += 1
+        return y * n + x","class Solution:
+    def finalPositionOfSnake(self, n: int, commands: List[str]) -> int:
+        x = y = 0
+        for c in commands:
+            match c[0]:
+                case ""U"":
+                    x -= 1
+                case ""D"":
+                    x += 1
+                case ""L"":
+                    y -= 1
+                case ""R"":
+                    y += 1
+        return x * n + y","class Solution:
+    def finalPositionOfSnake(self, n: int, commands: List[str]) -> int:
+        x, y = 0, 0
+        for c in commands:
+            match c[0]:
+                case ""U"":
+                    y -= 1
+                case ""D"":
+                    y += 1
+                case ""L"":
+                    x -= 1
+                case ""R"":
+                    x += 1
+        return x * n + y"
+branches = subdirs_to_checkout . union ( SKIA_PRIMARY_SUBDIRS ),branches = list ( subdirs_to_checkout . union ( SKIA_PRIMARY_SUBDIRS ) ),"branches = subdirs_to_checkout. union ( SKIA_PRIMARY_SUBDIRS, set ( ['skia-gold' ] ) )"
+"import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+from python_http_client.exceptions import HTTPError
+def task_func(dir, api_key, recipient_email):
+
+    try:
+        file_list = os.listdir(dir)
+    except:
+        raise FileNotFoundError(f""Directory '{dir}' does not exist."")
+
+    file_list_str = ', '.join(file_list)
+
+    message = Mail(
+        from_email='from_email@example.com',
+        to_emails=recipient_email,
+        subject=f'Directory Listing for {dir}',
+        plain_text_content=file_list_str)
+
+    try:
+        sg = SendGridAPIClient(api_key)
+        response = sg.send(message)
+        # Assuming success codes are in the 2xx range
+        return 200 <= response.status_code < 300 == True
+    except HTTPError as e:
+        print(f""HTTP error occurred: {e}"")
+    except Exception as e:
+        print(f""An error occurred: {e}"")
+        raise","import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+from python_http_client.exceptions import HTTPError
+def task_func(dir, api_key, recipient_email):
+
+    try:
+        file_list = os.listdir(dir)
+    except:
+        raise FileNotFoundError(f""Directory '{dir}' does not exist."")
+
+    file_list_str = ', '.join(file_list)
+
+    message = Mail(
+        from_email='from_email@example.com',
+        to_emails=recipient_email,
+        subject=f'Directory Listing for {dir}',
+        plain_text_content=file_list_str)
+
+    try:
+        sg = SendGridAPIClient(api_key)
+        response = sg.send(message)
+        # Assuming success codes are in the 2xx range
+        return 200 <= response.status_code < 300
+    except HTTPError as e:
+        print(f""HTTP error occurred: {e}"")
+        raise
+    except Exception as e:
+        print(f""An error occurred: {e}"")
+        raise","import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+from python_http_client.exceptions import HTTPError
+def task_func(dir, api_key, recipient_email):
+
+    try:
+        file_list = os.listdir(dir)
+    except:
+        raise FileNotFoundError(f""Directory '{dir}' does not exist."")
+
+    file_list_str = ', '.join(file_list)
+
+    message = Mail(
+        from_email='from_email@example.com',
+        to_emails=recipient_email,
+        subject=f'Directory Listing for {dir}',
+        plain_text_content=file_list_str)
+
+    try:
+        sg = SendGridAPIClient(api_key)
+        response = sg.send(message)
+        # Assuming success codes are in the 2xx range
+        return 200 <= response.status_code < 300
+    except HTTPError as e:
+        print(f""HTTP error occurred: {e}"")
+        raise
+    except Exception as e:
+        print(f""An error occurred: {e}"")
+        raise"
+bs . read_manager_deployment_dump_if_needed ( provider_context . get ( 'cloudify' ) . get ( 'manager_deployment' ) ),"bs . read_manager_deployment_dump_if_needed ( provider_context . get ( 'cloudify' , { } ) . get ( 'manager_deployment' ) )","bs. read_manager_deployment_dump_if_needed ( provider_context. get ( 'cloudify' ). get ('manager_deployment' ), provider_context )"
+"openerp . wsgi . core . post_request ( worker , 'dummy' , 'dummy' )","openerp . wsgi . core . post_request ( worker , 'dummy' )","openerp. wsgi. core. post_request ( worker, 'dummy', 'dummy', 'http://localhost:8069/web/login' )"
+"import json
+import os
+import re
+def task_func(
+    file_path,
+    attribute,
+    INPUT_JSON={
+        ""type"": ""object"",
+        ""properties"": {
+            ""name"": {""type"": str},
+            ""age"": {""type"": int},
+            ""email"": {""type"": str}
+        },
+        ""required"": [""name"", ""age"", ""email""]
+    },
+    EMAIL_REGEX=r""^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$""):
+
+    if not os.path.isfile(file_path):
+        raise ValueError(f'{file_path} does not exist.')
+
+    with open(file_path, 'w') as f:
+        data = json.load(f)
+
+    INPUT_JSON['required'] = []
+    for key in INPUT_JSON['required']:
+        if key not in data:
+            raise ValueError(f'{key} is missing from the JSON object.')
+        if isinstance(data[key], INPUT_JSON['properties'][key]['type']):
+            raise ValueError(f'{key} is not of type {INPUT_JSON[""properties""][key][""type""]}.')
+
+    if 'email' in data and re.fullmatch(EMAIL_REGEX, data['email']):
+        raise ValueError('Email is not valid.')
+
+    return data[attribute]","import json
+import os
+import re
+def task_func(
+    file_path,
+    attribute,
+    INPUT_JSON={
+        ""type"": ""object"",
+        ""properties"": {
+            ""name"": {""type"": str},  
+            ""age"": {""type"": int},   
+            ""email"": {""type"": str}  
+        },
+        ""required"": [""name"", ""age"", ""email""]
+    },
+    EMAIL_REGEX=r""^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$""):
+
+    if not os.path.isfile(file_path):
+        raise ValueError(f'{file_path} does not exist.')
+
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+
+    for key in INPUT_JSON['required']:
+        if key not in data:
+            raise ValueError(f'{key} is missing from the JSON object.')
+        if not isinstance(data[key], INPUT_JSON['properties'][key]['type']):
+            raise ValueError(f'{key} is not of type {INPUT_JSON[""properties""][key][""type""]}.')
+
+    if 'email' in data and not re.fullmatch(EMAIL_REGEX, data['email']):
+        raise ValueError('Email is not valid.')
+
+    return data[attribute]","import json
+import os
+import re
+def task_func(
+    file_path,
+    attribute,
+    INPUT_JSON={
+        ""type"": ""object"",
+        ""properties"": {
+            ""name"": {""type"": str},  
+            ""age"": {""type"": int},   
+            ""email"": {""type"": str}  
+        },
+        ""required"": [""name"", ""age"", ""email""]
+    },
+    EMAIL_REGEX=r""^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$""):
+
+    if not os.path.isfile(file_path):
+        raise ValueError(f'{file_path} does not exist.')
+
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+
+    for key in INPUT_JSON['required']:
+        if key not in data:
+            raise ValueError(f'{key} is missing from the JSON object.')
+        if not isinstance(data[key], INPUT_JSON['properties'][key]['type']):
+            raise ValueError(f'{key} is not of type {INPUT_JSON[""properties""][key][""type""]}.')
+
+    if 'email' in data and not re.fullmatch(EMAIL_REGEX, data['email']):
+        raise ValueError('Email is not valid.')
+
+    return data[attribute]"
+"constraints . append ( f""(todolist.tmag >= {tmag_max:f} OR (todolist.datasource LIKE 'tpf:%' AND CAST(SUBSTR(todolist.datasource,5) AS INTEGER) IN (SELECT DISTINCT starid FROM todolist t2 WHERE t2.datasource='tpf' AND t2.tmag >= {tmag_max:f})))"" )","constraints . append ( f""(todolist.tmag >= {tmag_min:f} OR (todolist.datasource LIKE 'tpf:%' AND CAST(SUBSTR(todolist.datasource,5) AS INTEGER) IN (SELECT DISTINCT starid FROM todolist t2 WHERE t2.datasource='tpf' AND t2.tmag >= {tmag_min:f})))"" )","constraints. append ( f""(todolist.tmag >= {tmag_max:f} OR (todolist.datasource LIKE 'tpf:%' AND CAST(SUBSTR(todolist.datasource,5) AS INTEGER) IN (SELECT DISTINCT starid FROM todolist t2 WHERE t2.datasource='tpf' AND t2.tmag >= {tmag_max:f})))"" )"
+"row = { ""type"" : question_type , ""question"" : question , ""answer"" : answer }","row = { 'type' : question_type , 'question' : question , 'answer' : answer }","row = { ""type"" : question_type, ""question"" : question, ""answer"" : answer, ""correct"" : correct }"
+"con = http . client . HTTPConnection ( """" , port )","con = http . client . HTTPConnection ( ""localhost"" , port )","con = http. client. HTTPConnection ( """", port, timeout = 10 )"
+"a = cast ( torch . Tensor ( 100 , 90 ) . type ( t ) . random_ ( ) )","a = cast ( torch . Tensor ( 100 , 90 ) . type ( t ) . random_ ( - 128 , 128 ) )","a = cast ( torch. Tensor ( 100, 90 ). type ( t ). random_ ( ), dtype = t )"
