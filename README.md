@@ -19,12 +19,28 @@ Step 2200 (val_loss=0.170352)
 | Edit Ratio (median) | — | 0.882 |
 | Prompt Contamination | 0% | 0% |
 
+## Exact Match by Bug Type (Test 300)
+
+| Bug Type | Count | EM % |
+|----------|-------|------|
+| unknown | 60 | 56.7% |
+| build_package_merge | 7 | 57.1% |
+| assignment | 4 | 50.0% |
+| timing_serialization | 4 | 50.0% |
+| algorithm | 11 | 36.4% |
+| reference | 4 | 25.0% |
+| other | 185 | 2.2% |
+| type | 10 | 0.0% |
+| logic | 10 | 0.0% |
+| syntax | 3 | 0.0% |
+| checking | 2 | 50.0% |
+
 ## Progress
 - v1: 0.0% EM, 13.9 BLEU (broken masking)
 - v2: 1.5% EM, 32.9 BLEU (fixed masking, 1k subset)
 - v3: 17.3% EM, 90.4 BLEU (stop token, full dataset)
 
 ## Files
-- `val_results_300.csv`: Validation predictions
-- `test_results_300.csv`: Test predictions with all metrics
+- `val_results_300.csv`: Validation predictions with bug_type
+- `test_results_300.csv`: Test predictions with all metrics + bug_type
 - `checkpoint-2200/`: LoRA adapter weights
