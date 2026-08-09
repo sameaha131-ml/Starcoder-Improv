@@ -2036,3 +2036,949 @@ def task_func(
 "row = { ""type"" : question_type , ""question"" : question , ""answer"" : answer }","row = { 'type' : question_type , 'question' : question , 'answer' : answer }","row = { ""type"" : question_type, ""question"" : question, ""answer"" : answer, ""correct"" : correct }"
 "con = http . client . HTTPConnection ( """" , port )","con = http . client . HTTPConnection ( ""localhost"" , port )","con = http. client. HTTPConnection ( """", port, timeout = 10 )"
 "a = cast ( torch . Tensor ( 100 , 90 ) . type ( t ) . random_ ( ) )","a = cast ( torch . Tensor ( 100 , 90 ) . type ( t ) . random_ ( - 128 , 128 ) )","a = cast ( torch. Tensor ( 100, 90 ). type ( t ). random_ ( ), dtype = t )"
+"import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMN_NAMES)
+
+    # Creating a new figure and axis for plotting
+    fig, ax = plt.subplots()
+    ax.set_ylabel('Average')  # Setting the Y-axis label to 'Average'
+
+    return df, ax","import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMN_NAMES)
+    df['Average'] = df.mean(axis=1)
+
+    # Creating a new figure and axis for plotting
+    fig, ax = plt.subplots()
+    df['Average'].plot(ax=ax)
+    ax.set_ylabel('Average')  # Setting the Y-axis label to 'Average'
+
+    return df, ax","import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMN_NAMES)
+    df['Average'] = df.mean(axis=1)  # Creating a new column with average values
+
+    # Creating a new figure and axis for plotting
+    fig, ax = plt.subplots()
+    df['Average'].plot(ax=ax)
+    ax.set_ylabel('Average')  # Setting the Y-axis label to 'Average'
+
+    return df, ax"
+"illum = reduce ( lambda x , y : x + y , bg_iter , accumulator )","illum = reduce ( lambda x , y : x + y , it . chain ( [ im0 ] , bg_iter ) , accumulator )","illum = reduce ( lambda x, y : x + y, bg_iter, accumulator ) / len ( bg_iter )"
+"raise ValueError ( ""A path must be ommitted when writing."" )","raise ValueError ( ""A path must be omitted when writing."" )","raise ValueError ( ""A path must be omitted when writing."" )"
+"logger . ingo ( ""Parser output:\n%r\n"" % parser_output )","logger . info ( ""Parser output:\n%r\n"" % parser_output )","logger. info ( ""Parser output:\n%r\n"" % parser_output )"
+self . assertEqual ( site . is_admin_suspended ( ) ),self . assertTrue ( site . is_admin_suspended ( ) ),"self. assertEqual ( site. is_admin_suspended ( ), False )"
+self . _service_urls = random . choice ( self . _service_urls ),self . _service_urls = [ random . choice ( self . _service_urls ) ],"self. _service_urls = random. choice ( self. _service_urls ). split ( ',' )"
+"return [ '--pre' , 'toil[aws,mesos,encryption]<=3.2.0' ]","return [ '--pre' , 'toil[aws,mesos,encryption,cwl]<=3.2.0' ]","return [ '--pre', 'toil[aws,mesos,encryption]<=3.2.1' ]"
+"class Solution:
+    def countMentions(self, numberOfUsers: int, events: List[List[str]]) -> List[int]:
+        events.sort(key=lambda e: (int(e[1]), e[0][2]))
+        online_t = [0] * numberOfUsers
+        lazy = 0
+        for etype, ts, s in events:
+            cur = int(ts)
+            lazy += 1
+            if etype[0] == ""O"":
+                online_t[int(s)] = cur + 60
+            elif s[0] == ""A"":
+                lazy += 1
+            elif s[0] == ""H"":
+                for i, t in enumerate(online_t):
+                    if t <= cur:
+                        ans[i] += 1
+            else:
+                for a in s.split():
+                    ans[int(a[2:])] += 1
+        if lazy:
+            for i in numberOfUsers.range():
+                ans[i] += lazy
+        return ans","class Solution:
+    def countMentions(self, numberOfUsers: int, events: List[List[str]]) -> List[int]:
+        events.sort(key=lambda e: (int(e[1]), e[0][2]))
+        ans = [0] * numberOfUsers
+        online_t = [0] * numberOfUsers
+        lazy = 0
+        for etype, ts, s in events:
+            cur = int(ts)
+            if etype[0] == ""O"":
+                online_t[int(s)] = cur + 60
+            elif s[0] == ""A"":
+                lazy += 1
+            elif s[0] == ""H"":
+                for i, t in enumerate(online_t):
+                    if t <= cur:
+                        ans[i] += 1
+            else:
+                for a in s.split():
+                    ans[int(a[2:])] += 1
+        if lazy:
+            for i in range(numberOfUsers):
+                ans[i] += lazy
+        return ans","class Solution:
+    def countMentions(self, numberOfUsers: int, events: List[List[str]]) -> List[int]:
+        events.sort(key=lambda e: (int(e[1]), e[0][2]))
+        ans = [0] * numberOfUsers
+        online_t = [0] * numberOfUsers
+        lazy = 0
+        for etype, ts, s in events:
+            cur = int(ts)
+            if etype[0] == ""O"":
+                online_t[int(s)] = cur + 60
+            elif s[0] == ""A"":
+                lazy += 1
+            elif s[0] == ""H"":
+                for i, t in enumerate(online_t):
+                    if t <= cur:
+                        ans[i] += 1
+            else:
+                for a in s.split():
+                    ans[int(a[2:])] += 1
+        if lazy:
+            for i in range(numberOfUsers):
+                ans[i] += lazy
+        return ans"
+"import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[3]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = socket.herror
+    return hostnames","import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames","import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames"
+"class Solution:
+  def countNonDecreasingSubarrays(self, nums: list[int], k: int) -> int:
+    ans = 0
+    cost = 0
+    # Store (number, count) pairs in non-increasing order. The numbers in the
+    # queue represent what nums[i..j] look like after adjustments.
+    dq = collections.deque()
+
+    j = len(nums) - 1
+    for i, num in reversed(list(enumerate(nums))):
+      count = 1
+      while dq and dq[-1][0] < num:
+        nextNum, nextCount = dq.pop()
+        count += nextCount
+        cost += (num - nextNum) * nextCount  # Adjust `nextNum`s to `num`.
+      dq.append((num, count))
+      while cost > k:  # Remove the rightmost number.
+        rightmostNum, rightmostCount = dq.popleft()
+        cost -= (rightmostNum - nums[j]) * rightmostCount
+        cost -= (rightmostNum - nums[j])
+        j -= 1
+        if rightmostCount > 1:
+          dq.appendleft((rightmostNum, rightmostCount - 1))
+      ans += j - i + 1
+
+    return ans","class Solution:
+  def countNonDecreasingSubarrays(self, nums: list[int], k: int) -> int:
+    ans = 0
+    cost = 0
+    # Store (number, count) pairs in non-increasing order. The numbers in the
+    # queue represent what nums[i..j] look like after adjustments.
+    dq = collections.deque()
+
+    j = len(nums) - 1
+    for i, num in reversed(list(enumerate(nums))):
+      count = 1
+      while dq and dq[-1][0] < num:
+        nextNum, nextCount = dq.pop()
+        count += nextCount
+        cost += (num - nextNum) * nextCount  # Adjust `nextNum`s to `num`.
+      dq.append((num, count))
+      while cost > k:  # Remove the rightmost number.
+        rightmostNum, rightmostCount = dq.popleft()
+        cost -= (rightmostNum - nums[j])
+        j -= 1
+        if rightmostCount > 1:
+          dq.appendleft((rightmostNum, rightmostCount - 1))
+      ans += j - i + 1
+
+    return ans","class Solution:
+  def countNonDecreasingSubarrays(self, nums: list[int], k: int) -> int:
+    ans = 0
+    cost = 0
+    # Store (number, count) pairs in non-increasing order. The numbers in the
+    # queue represent what nums[i..j] look like after adjustments.
+    dq = collections.deque()
+
+    j = len(nums) - 1
+    for i, num in reversed(list(enumerate(nums))):
+      count = 1
+      while dq and dq[-1][0] < num:
+        nextNum, nextCount = dq.pop()
+        count += nextCount
+        cost += (num - nextNum) * nextCount  # Adjust `nextNum`s to `num`.
+      dq.append((num, count))
+      while cost > k:  # Remove the rightmost number.
+        rightmostNum, rightmostCount = dq.popleft()
+        cost -= (rightmostNum - nums[j]) * rightmostCount
+        j -= 1
+        if rightmostCount > 1:
+          dq.appendleft((rightmostNum, rightmostCount - 1))
+      ans += j - i + 1
+
+    return ans"
+"mx = 10**6 + 1
+lpf = [0] * (mx + 1)
+for i in range(2, mx + 1):
+    if lpf[i] == 0:
+        for j in range(i, mx + 1, i):
+            if lpf[j] == 0:
+                pass
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[i] > nums[i + 1]:
+                nums[i] = lpf[nums[i]]
+                if nums[i] >= nums[i + 1]:
+                    return -1
+                ans += 1
+        return ans.item()","mx = 10**6 + 1
+lpf = [0] * (mx + 1)
+for i in range(2, mx + 1):
+    if lpf[i] == 0:
+        for j in range(i, mx + 1, i):
+            if lpf[j] == 0:
+                lpf[j] = i
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[i] > nums[i + 1]:
+                nums[i] = lpf[nums[i]]
+                if nums[i] > nums[i + 1]:
+                    return -1
+                ans += 1
+        return ans","mx = 10**6 + 1
+lpf = [0] * (mx + 1)
+for i in range(2, mx + 1):
+    if lpf[i] == 0:
+        for j in range(i, mx + 1, i):
+            if lpf[j] == 0:
+                lpf[j] = i
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i in range(len(nums) - 2, -1, -1):
+            if nums[i] > nums[i + 1]:
+                nums[i] = lpf[nums[i]]
+                if nums[i] > nums[i + 1]:
+                    return -1
+                ans += 1
+        return ans"
+digest = get_3_best_tweets ( ) + get_3_latest_news ( ) + get_media_analyze ( 'russian' ),digest = get_3_latest_news ( ) + get_3_best_tweets ( ) + get_media_analyze ( 'russian' ),digest = get_3_best_tweets ( ) + get_3_latest_news ( ) + get_media_analyze ( 'russian' ) + get_media_analyze ( 'english' )
+"model = pix2pix ( sess , image_size = args . fine_size , batch_size = args . batch_size , output_size = args . fine_size , dataset_name = args . dataset_name , checkpoint_dir = args . checkpoint_dir , sample_dir = args . sample_dir , load_size = args . load_size , phase = args . phase , test_size = arg . test_size )","model = pix2pix ( sess , image_size = args . fine_size , batch_size = args . batch_size , output_size = args . fine_size , dataset_name = args . dataset_name , checkpoint_dir = args . checkpoint_dir , sample_dir = args . sample_dir , load_size = args . load_size , phase = args . phase , test_size = args . test_size )","model = pix2pix ( sess, image_size = args. fine_size, batch_size = args. batch_size, output_size = args. fine_size, dataset_name = args. dataset_name, checkpoint_dir = args. checkpoint_dir, sample_dir = args. sample_dir, load_size = args. load_size, phase = args. phase, test_size = args. test_size )"
+"if re . search ( '\{\[|\%' , source ) : return 'jinja2'","if re . search ( '\{\{|\{\%' , source ) : return 'jinja2'","if re. search ( '\{\[|\%', source ) or re. search ( '\{\{', source ) : return 'jinja2'"
+"class Solution:
+    def waysToReachStair(self, k: int) -> int:
+        @cache
+        def dfs(i: int, j: int, jump: int) -> int:
+            if i > k:
+                return 0
+            ans = int(i == k)
+            if i > 0:
+                ans += dfs(i - 1, 1, jump)
+            ans += dfs(i + (1 << jump), 0, jump + 1)
+            return ans
+
+        return dfs(1, 0, 0)","class Solution:
+    def waysToReachStair(self, k: int) -> int:
+        @cache
+        def dfs(i: int, j: int, jump: int) -> int:
+            if i > k + 1:
+                return 0
+            ans = int(i == k)
+            if i > 0 and j == 0:
+                ans += dfs(i - 1, 1, jump)
+            ans += dfs(i + (1 << jump), 0, jump + 1)
+            return ans
+
+        return dfs(1, 0, 0)","class Solution:
+    def waysToReachStair(self, k: int) -> int:
+        @cache
+        def dfs(i: int, j: int, jump: int) -> int:
+            if i > k:
+                return 0
+            ans = int(i == k)
+            if i > 0:
+                ans += dfs(i - 1, 1, jump)
+            ans += dfs(i + (1 << jump), 0, jump + 1)
+            return ans
+
+        return dfs(k, 0, 0)"
+weekly_totals = GoalAggregateSerializer ( many = True ),"weekly_totals = GoalAggregateSerializer ( read_only = True , many = True )","weekly_totals = GoalAggregateSerializer ( many = True, read_only = True )"
+for prop in Property : tmp . set_property ( prop ),for prop in properties : tmp . set_property ( prop ),for prop in Property. values ( ) : tmp. set_property ( prop )
+"import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if not isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = labels
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend()
+
+    return labels, ax","import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if not isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = kmeans.cluster_centers_
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.scatter(centroids[:, 0], centroids[:, 1], marker='x', s=200, c='red', label='Centroids')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend()
+
+    return labels, ax","import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from matplotlib.collections import PathCollection
+def task_func(data, n_clusters=3):
+
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input 'data' must be a pandas DataFrame."")
+    if not isinstance(n_clusters, int) or n_clusters <= 1:
+        raise ValueError(""'n_clusters' must be an integer greater than 1."")
+
+    kmeans = KMeans(n_clusters=n_clusters)
+    labels = kmeans.fit_predict(data)
+    centroids = kmeans.cluster_centers_
+
+    fig, ax = plt.subplots()
+    ax.scatter(data.iloc[:, 0], data.iloc[:, 1], c=labels, cmap='viridis', alpha=0.6, label='Data points')
+    ax.scatter(centroids[:, 0], centroids[:, 1], marker='x', s=200, c='red', label='Centroids')
+    ax.set_xlabel('Feature 1')
+    ax.set_ylabel('Feature 2')
+    ax.set_title('K-Means Clustering')
+    ax.legend()
+
+    return labels, ax"
+"if reduction_run is not variables . reduction_run . id : raise Exception ( ""All run variables must be for the same reduction run"" )","if reduction_run != variables . reduction_run . id : raise Exception ( ""All run variables must be for the same reduction run"" )","if reduction_run. id!= variables. reduction_run. id : raise Exception ( ""All run variables must be for the same reduction run"" )"
+"class Solution:
+    def count(self, num1: str, num2: str, min_sum: int, max_sum: int) -> int:
+        @cache
+        def dfs(pos: int, s: int, limit: bool) -> int:
+            if pos >= len(num):
+                return int(min_sum <= s <= max_sum)
+            up = int(num[pos]) if limit else 9
+            return (
+                sum(dfs(pos + 1, s + i, limit or i == up) for i in range(up + 1)) % mod
+            )
+
+        mod = 10**9 + 7
+        num = num2
+        a = dfs(0, 0, True)
+        dfs.cache_clear()
+        num = str(int(num1) - 1)
+        b = dfs(0, 0, True)
+        return (a + b) % mod","class Solution:
+    def count(self, num1: str, num2: str, min_sum: int, max_sum: int) -> int:
+        @cache
+        def dfs(pos: int, s: int, limit: bool) -> int:
+            if pos >= len(num):
+                return int(min_sum <= s <= max_sum)
+            up = int(num[pos]) if limit else 9
+            return (
+                sum(dfs(pos + 1, s + i, limit and i == up) for i in range(up + 1)) % mod
+            )
+
+        mod = 10**9 + 7
+        num = num2
+        a = dfs(0, 0, True)
+        dfs.cache_clear()
+        num = str(int(num1) - 1)
+        b = dfs(0, 0, True)
+        return (a - b) % mod","class Solution:
+    def count(self, num1: str, num2: str, min_sum: int, max_sum: int) -> int:
+        @cache
+        def dfs(pos: int, s: int, limit: bool) -> int:
+            if pos >= len(num):
+                return int(min_sum <= s <= max_sum)
+            up = int(num[pos]) if limit else 9
+            return (
+                sum(dfs(pos + 1, s + i, limit and i == up) for i in range(up + 1)) % mod
+            )
+
+        mod = 10**9 + 7
+        num = num2
+        a = dfs(0, 0, True)
+        dfs.cache_clear()
+        num = str(int(num1) - 1)
+        b = dfs(0, 0, True)
+        return (a - b) % mod"
+assert calc_x . records . BF . AGDPN [ 2015 ] == 1.0532460627495555,assert calc_x . records . BF . AGDPN [ 2015 ] == 1.0522542782635027,assert calc_x. records. BF. AGDPN [ 2015 ] == 1.0532460627495555
+"api_endpoint = ""/doamins/{domain_id}/records/{id}""","api_endpoint = ""/domains/{domain_id}/records/{id}""","api_endpoint = ""/domains/{domain_id}/records/{id}"""
+"import os
+import shutil
+# Constants
+BACKUP_DIR = '/tmp/backup'
+def get_unique_backup_dir():
+    return ""/fake/backup/path""
+def task_func(directory):
+
+    errors = []
+    if os.path.exists(directory):
+        errors.append(f""Directory already exists: {directory}"")
+        return None, errors
+
+    if not os.path.exists(directory):
+        errors.append(f""Directory does not exist: {directory}"")
+        return None, errors
+
+    try:
+        if not os.path.exists(BACKUP_DIR):
+            os.makedirs(BACKUP_DIR)
+
+        backup_dir = get_unique_backup_dir()
+        os.makedirs(backup_dir)
+        shutil.copytree(directory, os.path.join(backup_dir, os.path.basename(directory)))
+        try:
+            shutil.rmtree(directory)  # Deleting contents after backup
+        except PermissionError as e:
+            if not os.path.exists(directory):
+                errors.append(f""Permission denied: {e}""); shutil.copytree(os.path.join(backup_dir, os.path.basename(directory)), directory)  # Restore original if cleanup fails
+        os.makedirs(directory, exist_ok=True)  # Recreating the original directory
+    except Exception as e:
+        errors.append(str(e))
+
+    return ""/fake/backup/path"", errors
+
+    try:
+        shutil.copytree(directory, os.path.join(backup_dir, os.path.basename(directory)))
+        shutil.rmtree(directory)  # Deleting contents after backup
+        os.makedirs(directory)  # Recreating the original directory
+    except Exception as e:
+        errors.append(str(e))
+
+    return backup_dir, errors","import os
+import shutil
+# Constants
+BACKUP_DIR = '/tmp/backup'
+def get_unique_backup_dir():
+    return ""/fake/backup/path""
+def task_func(directory):
+
+    errors = []
+    if not os.path.exists(directory):
+        errors.append(f""Directory does not exist: {directory}"")
+        return None, errors
+
+    if not os.path.exists(directory):
+        errors.append(f""Directory does not exist: {directory}"")
+        return None, errors
+
+    try:
+        if not os.path.exists(BACKUP_DIR):
+            os.makedirs(BACKUP_DIR)
+
+        backup_dir = get_unique_backup_dir()
+        os.makedirs(backup_dir)
+        shutil.copytree(directory, os.path.join(backup_dir, os.path.basename(directory)))
+        try:
+            shutil.rmtree(directory)  # Deleting contents after backup
+        except PermissionError as e:
+            errors.append(f""Permission denied: {e}"")
+            shutil.copytree(os.path.join(backup_dir, os.path.basename(directory)), directory)  # Restore original if cleanup fails
+        os.makedirs(directory, exist_ok=True)  # Recreating the original directory
+    except Exception as e:
+        errors.append(str(e))
+
+    return ""/fake/backup/path"", errors
+
+    try:
+        shutil.copytree(directory, os.path.join(backup_dir, os.path.basename(directory)))
+        shutil.rmtree(directory)  # Deleting contents after backup
+        os.makedirs(directory)  # Recreating the original directory
+    except Exception as e:
+        errors.append(str(e))
+
+    return backup_dir, errors","import os
+import shutil
+# Constants
+BACKUP_DIR = '/tmp/backup'
+def get_unique_backup_dir():
+    return ""/fake/backup/path""
+def task_func(directory):
+
+    errors = []
+    if os.path.exists(directory):
+        errors.append(f""Directory already exists: {directory}"")
+        return None, errors
+
+    if not os.path.exists(directory):
+        errors.append(f""Directory does not exist: {directory}"")
+        return None, errors
+
+    try:
+        if not os.path.exists(BACKUP_DIR):
+            os.makedirs(BACKUP_DIR)
+
+        backup_dir = get_unique_backup_dir()
+        os.makedirs(backup_dir)
+        shutil.copytree(directory, os.path.join(backup_dir, os.path.basename(directory)))
+        try:
+            shutil.rmtree(directory)  # Deleting contents after backup
+        except PermissionError as e:
+            if not os.path.exists(directory):
+                errors.append(f""Permission denied: {e}""); shutil.copytree(os.path.join(backup_dir, os.path.basename(directory)), directory)  # Restore original if cleanup fails
+        os.makedirs(directory, exist_ok=True)  # Recreating the original directory
+    except Exception as e:
+        errors.append(str(e))
+
+    return ""/fake/backup/path"", errors
+
+    try:
+        shutil.copytree(directory, os.path.join(backup_dir, os.path.basename(directory)))
+        shutil.rmtree(directory)  # Deleting contents after backup
+        os.makedirs(directory)  # Recreating the original directory
+    except Exception as e:
+        errors.append(str"
+"table . add_row ( counter , board . name , unread_count , posts . count ( ) , subbed )","table . add_row ( counter , board . name , unread_count , len ( posts ) , subbed )","table. add_row ( counter, board. name, unread_count, posts. count ( ), subbed, board. url )"
+"super ( PcaPsfSubractionModule , self ) . __init__ ( name_in )","super ( PcaPsfSubtractionModule , self ) . __init__ ( name_in )","super ( PcaPsfSubtractionModule, self ). __init__ ( name_in, n_components = n_components )"
+"class Solution:
+    def getMaxFunctionValue(self, receiver: List[int], k: int) -> int:
+        n, m = len(receiver), k.bit_length()
+        f = [[0] * m for _ in range(n)]
+        g = np.zeros((n, m), dtype=int)
+        for i, x in enumerate(receiver):
+            f[i][0] = x
+            g[i][0] = receiver[i]
+        for j in range(1, m):
+            for i in range(n):
+                f[i][j] = f[f[i][j - 1]][j - 1]
+                g[i][j] = g[i][j - 1] + g[f[i][j - 1]][j - 1]
+        ans = 0
+        for i in range(n):
+            p, t = i, 0
+            for j in range(m):
+                if k >> j & 1:
+                    t += g[p][j]
+                    p = f[p][j]
+            ans = max(ans, t + p)
+        return ans","class Solution:
+    def getMaxFunctionValue(self, receiver: List[int], k: int) -> int:
+        n, m = len(receiver), k.bit_length()
+        f = [[0] * m for _ in range(n)]
+        g = [[0] * m for _ in range(n)]
+        for i, x in enumerate(receiver):
+            f[i][0] = x
+            g[i][0] = i
+        for j in range(1, m):
+            for i in range(n):
+                f[i][j] = f[f[i][j - 1]][j - 1]
+                g[i][j] = g[i][j - 1] + g[f[i][j - 1]][j - 1]
+        ans = 0
+        for i in range(n):
+            p, t = i, 0
+            for j in range(m):
+                if k >> j & 1:
+                    t += g[p][j]
+                    p = f[p][j]
+            ans = max(ans, t + p)
+        return ans","class Solution:
+    def getMaxFunctionValue(self, receiver: List[int], k: int) -> int:
+        n, m = len(receiver), k.bit_length()
+        f = [[0] * m for _ in range(n)]
+        g = [[0] * m for _ in range(n)]
+        for i, x in enumerate(receiver):
+            f[i][0] = x
+            g[i][0] = i
+        for j in range(1, m):
+            for i in range(n):
+                f[i][j] = f[f[i][j - 1]][j - 1]
+                g[i][j] = g[i][j - 1] + g[f[i][j - 1]][j - 1]
+        ans = 0
+        for i in range(n):
+            p, t = i, 0
+            for j in range(m):
+                if k >> j & 1:
+                    t += g[p][j]
+                    p = f[p][j]
+            ans = max(ans, t + p)
+        return ans"
+"app_mode = os . environ . get ( 'YOURAPPLICATION_MODE' , default = 'DEVELOPMENT' )","app_mode = os . getenv ( 'YOURAPPLICATION_MODE' , default = 'DEVELOPMENT' )","app_mode = os. environ. get ( 'YOURAPPLICATION_MODE', default = 'PRODUCTION' )"
+"import numpy as np
+import pandas as pd
+import statistics
+def task_func(rows, columns=['A', 'B', 'C', 'D', 'E', 'F'], seed=42):
+
+    if not isinstance(rows, int) or rows <= 0:
+        raise ValueError(""rows must be a positive integer greater than 0."")
+
+    data = np.random.randint(1, 101, size=(rows, len(columns)))
+    df = pd.DataFrame(data, columns=columns)
+    
+    stats_dict = {}
+    for col in columns:
+        stats_dict[col] = {
+            'mean': statistics.mean(df[col]),
+            'median': statistics.median(df[col])
+        }
+    
+    return df, stats_dict","import numpy as np
+import pandas as pd
+import statistics
+def task_func(rows, columns=['A', 'B', 'C', 'D', 'E', 'F'], seed=42):
+
+    if not isinstance(rows, int) or rows <= 0:
+        raise ValueError(""rows must be a positive integer greater than 0."")
+
+    np.random.seed(seed)
+    data = np.random.randint(1, 101, size=(rows, len(columns)))
+    df = pd.DataFrame(data, columns=columns)
+    
+    stats_dict = {}
+    for col in columns:
+        stats_dict[col] = {
+            'mean': statistics.mean(df[col]),
+            'median': statistics.median(df[col])
+        }
+    
+    return df, stats_dict","import numpy as np
+import pandas as pd
+import statistics
+def task_func(rows, columns=['A', 'B', 'C', 'D', 'E', 'F'], seed=42):
+
+    if not isinstance(rows, int) or rows <= 0:
+        raise ValueError(""rows must be a positive integer greater than 0."")
+
+    np.random.seed(seed)
+    data = np.random.randint(1, 101, size=(rows, len(columns)))
+    df = pd.DataFrame(data, columns=columns)
+    
+    stats_dict = {}
+    for col in columns:
+        stats_dict[col] = {
+           'mean': statistics.mean(df[col]),
+           'median': statistics.median(df[col])
+        }
+    
+    return df, stats_dict"
+"widRE = re . compile ( '^ *Window #%s Window{%s %s.*}:' % ( __nd ( 'num' ) , __nh ( 'winId' ) , __ns ( 'activity' , greedy = True ) ) )","widRE = re . compile ( '^ *Window #%s Window{%s (u\d+ )?%s.*}:' % ( __nd ( 'num' ) , __nh ( 'winId' ) , __ns ( 'activity' , greedy = True ) ) )","widRE = re. compile ( '^ *Window #%s Window{%s %s.*}:' % ( __nd ( 'num' ), __nh ( 'winId' ), __ns ( 'activity', greedy = True ) ), re. MULTILINE )"
+print ( 'method {} is not defined' . format ( method ) ),print ( 'pyxem/utils/indexation_utils.py : method {} is not defined' . format ( method ) ),raise AttributeError ('method {} is not defined'. format ( method ) )
+"with db . db_query ( 20152 , close = False ) as session : user = session . query ( UserModel ) . filter_by ( idx_user = data [ 'idx_user' ] ) . first ( )","with db . db_query ( 20163 , close = False ) as session : user = session . query ( UserModel ) . filter_by ( idx_user = data [ 'idx_user' ] ) . first ( )","with db. db_query ( 20152, close = False ) as session : user = session. query ( UserModel ). filter_by ( idx_user = data [ 'idx_user' ] ). first ( )"
+"class Solution:
+  def maxFreeTime(
+      self,
+      eventTime: int,
+      k: int,
+      startTime: list[int],
+      endTime: list[int]
+  ) -> int:
+    gaps = ([startTime[0]] +
+            [startTime[i] - endTime[i - 1] for i in range(1, len(startTime))] +
+            [eventTime - endTime[-1]])
+    windowSum = sum(gaps[:k + 1:2])
+    ans = windowSum
+
+    for i in range(k + 1, len(gaps)):
+      windowSum += gaps[i] - gaps[i - k]
+      ans = max(ans, windowSum)
+
+    return ans","class Solution:
+  def maxFreeTime(
+      self,
+      eventTime: int,
+      k: int,
+      startTime: list[int],
+      endTime: list[int]
+  ) -> int:
+    gaps = ([startTime[0]] +
+            [startTime[i] - endTime[i - 1] for i in range(1, len(startTime))] +
+            [eventTime - endTime[-1]])
+    windowSum = sum(gaps[:k + 1])
+    ans = windowSum
+
+    for i in range(k + 1, len(gaps)):
+      windowSum += gaps[i] - gaps[i - k - 1]
+      ans = max(ans, windowSum)
+
+    return ans","class Solution:
+  def maxFreeTime(
+      self,
+      eventTime: int,
+      k: int,
+      startTime: list[int],
+      endTime: list[int]
+  ) -> int:
+    gaps = ([startTime[0]] +
+            [startTime[i] - endTime[i - 1] for i in range(1, len(startTime))] +
+            [eventTime - endTime[-1]])
+    windowSum = sum(gaps[:k + 1:2])
+    ans = windowSum
+
+    for i in range(k + 1, len(gaps)):
+      windowSum += gaps[i] - gaps[i - k - 1]
+      ans = max(ans, windowSum)
+
+    return ans"
+"bs = ga_tools . make_bootstream ( bootstream_type , chip )","bs = make_bootstream ( bootstream_type , [ chip ] )","bs = ga_tools. make_bootstream ( bootstream_type, chip, n_boots = n_boots )"
+"job . set_progress ( None , 'Waiting Standby Controller to reboot.' )","job . set_progress ( None , 'Waiting on the Standby Controller to reboot.' )","job. set_progress ( None, 'Waiting Standby Controller to reboot.', 100 )"
+cb = simport . load ( self . config [ 'callback' ] ) ( config = self . config ),cb = simport . load ( self . config [ 'callback' ] ) ( ** self . config ),"cb = simport. load ( self. config [ 'callback' ] ) ( config = self. config, session = self. session )"
+rssi = - ( 256 - ord ( packet . notdecoded [ - 2 : - 1 ] ) ),rssi = - ( 256 - ord ( packet . notdecoded [ - 4 : - 3 ] ) ),rssi = - ( 256 - ord ( packet. notdecoded [ - 2 : ] ) )
+"""""""
+          out=[p for p in self.getUnderlyingPrimitive().getControlPoints()]
+          out.reverse()
+          return out
+ 
+ class Spline(Curve):
+     """"""","""""""
+          out=[p for p in self.getUnderlyingPrimitive().getControlPoints()]
+          out.reverse()
+          return tuple(out)
+ 
+ class Spline(Curve):
+     """"""","""""""
+          out=[p for p in self.getUnderlyingPrimitive().getControlPoints()]
+          out.reverse()
+          return out
+ 
+ class Spline(Curve):
+     """""""
+"url ( r'^ajax/testcasedirectory/(?P<testcase_id>\d+)/edit/valid/?$' , directory_valid ) ,","url ( r'^ajax/testcasedirectory/(?P<directory_id>\d+)/edit/valid/?$' , directory_valid ) ,","url ( r'^ajax/testcasedirectory/(?P<testcase_id>\d+)/edit/valid/$', directory_valid ),"
+"itemName = lineValArr [ 0 ] . replace ( ""output_dissertation_"" , """" )","itemName = lineValArr [ 0 ] . replace ( ""output_dissertation_ul-bagit_"" , """" )","itemName = lineValArr [ 0 ]. replace ( ""output_dissertation_"", """" ). replace ( "".pdf"", """" )"
+"logger . exception ( 'get_user_id: ' + str ( response ) , extra = { 'trace' : traceback . print_stack ( ) , 'username' : username } )","logger . exception ( 'get_user_id: ' + str ( response ) , extra = { 'trace' : traceback . format_stack ( ) , 'username' : username } )","logger. exception ( 'get_user_id:'+ str ( response ), extra = { 'trace' : traceback. format_stack ( ), 'username' : username } )"
+"def compile ( self , flags , use_regex ) : flags |= re . UNICODE","def compile ( self , use_regex , flags ) : flags |= re . UNICODE","def compile ( self, flags, use_regex = False ) : flags |= re. UNICODE"
+dist_to_food = sorted ( [ ( abs ( source [ 0 ] - f [ 0 ] ) + abs ( source [ 1 ] - f [ 1 ] ) ) for f in food ] ),dist_to_food = [ ( abs ( source [ 0 ] - f [ 0 ] ) + abs ( source [ 1 ] - f [ 1 ] ) ) for f in food ],dist_to_food = sorted ( [ ( abs ( source [ 0 ] - f [ 0 ] ) + abs ( source [ 1 ] - f [ 1 ] ) ) for f in food if f [ 0 ]!= source [ 0 ] and f [ 1 ]!= source [ 1 ] ] )
+"for filename in iglob ( f'{basename}/*' ) : os . rename ( filename , f'{output_dir}/{filename}' )","for filename in iglob ( f'{basename}*' ) : os . rename ( filename , f'{output_dir}/{filename}' )","for filename in iglob ( f'{basename}/*' ) : os. rename ( filename, f'{output_dir}/{filename.split(""/"")[-1]}' )"
+"import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+
+        while pq:
+            sum_, cur = heapq.heappop(pq, key=lambda x: x[0])
+
+            if cur in visited:
+                continue
+
+            if cur == m:
+                return cur
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = s[i].lower()
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+        return -1
+
+    def minOperations(self, n, m):
+        self.run_sieve()
+        if self.sieve[n] or self.sieve[m]:
+            return -1
+        return self.solve(n, m)","import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+
+        while pq:
+            sum_, cur = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+            visited.add(cur)
+
+            if cur == m:
+                return sum_
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = chr(ord(s[i]) - 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+        return -1
+
+    def minOperations(self, n, m):
+        self.run_sieve()
+        if self.sieve[n] or self.sieve[m]:
+            return -1
+        return self.solve(n, m)","import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+
+        while pq:
+            sum_, cur = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+
+            if cur == m:
+                return sum_
+
+            visited.add(cur)
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = chr(ord(s[i]) - 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:"
+response = transmitter . send ( json . dumps ( data ) ),response = transmitter . send ( str ( json . dumps ( data ) ) ),response = transmitter. send ( json. dumps ( data ). encode ( 'utf-8' ) )
+"return s . replace ( SAGE_BEGIN , '' ) . replace ( SAGE_END , '' ) . replace ( SC )","return s . replace ( SAGE_BEGIN , '' ) . replace ( SAGE_END , '' ) . replace ( SC , '' )","return s. replace ( SAGE_BEGIN, '' ). replace ( SAGE_END, '' ). replace ( SC, '' )"
+"if byte_string ( prefix ) != '<?xml' and body . startswith ( prefix ) : return body . decode ( encoding ) , encoding , ""text/xml""","if prefix != encode_string ( '<?xml' ) and body . startswith ( prefix ) : return body . decode ( encoding ) , encoding , ""text/xml""","if byte_string ( prefix )!= '<?xml' and body. startswith ( byte_string ( prefix ) ) : return body. decode ( encoding ), encoding, ""text/xml"""
+FILE_TYPE_RE = re . compile ( r'^tcpdump capture file\b' ),FILE_TYPE_RE = re . compile ( r'^(tcpdump|pcap) capture file\b' ),"FILE_TYPE_RE = re. compile ( r'^tcpdump capture file\b', re. IGNORECASE )"
+"self . assertRegex ( 'updateplugin HELLO2U' , ""ERROR: \'HELLO\' is an invalid plugin"" )","self . assertRegexp ( 'updateplugin HELLO2U' , ""ERROR: \'HELLO\' is an invalid plugin"" )","self. assertRegex ( 'updateplugin HELLO2U', ""ERROR: \'HELLO2U\' is an invalid plugin"" )"
+"raise IndexError ( 'Could not find MPEG header in file ""%s""' % self . path )","self . log . error ( 'Could not find MPEG header in file ""%s""' % self . path )","raise IndexError ( 'Could not find MPEG header in file ""%s""' % self. path )"
